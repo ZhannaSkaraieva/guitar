@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+@theme {
+    --spacing: 1px; 
+  }
+
+body {
+    background-color: white;
+}
