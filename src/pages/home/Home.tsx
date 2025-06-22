@@ -1,6 +1,4 @@
 import React from 'react'
-import Header from '../../components/widgets/header/Header'
-import Footer from '../../components/widgets/footer/Footer'
 
 
 export const Home = () => {

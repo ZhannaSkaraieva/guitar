@@ -9,7 +9,7 @@ export default function AppRoutes() {
     return (
         <Routes>
             <Route index element={<Home />} />
-            <Route path='/:guitarId' element={<Home />} />
+            <Route path='/:guitarId' element={<Home />} /> {/** : -  «динамический сегмент» */}
             <Route path="about" element={<About />} />
             <Route path="wherebuy" element={<Wherebuy />} />
             <Route path="cart" element={<Cart />} />
