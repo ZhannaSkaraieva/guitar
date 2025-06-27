@@ -8,7 +8,7 @@ import GuitarFooter from './components/GuitarFooter'
 
 function App() { 
   return (
-      <div className="  container mx-auto max-w-[1020px] min-h-screen  flex flex-col">
+      <div className="  container mx-auto max-w-full min-h-screen  flex flex-col">
         <Header />                     {/* Хедер сверху */}
         <main className="flex-grow">
           <AppRoutes />               {/* Сюда подставляются страницы */}
