@@ -5,11 +5,13 @@ import GuitarIcon from './components/GuitarIcon'
 import ClockIcon from '../assets/ClockIcon'
 import PhoneIcon from '../assets/PhoneIcon'
 import AppNavFooter from '../route/AppNavFooter'
+import Rectangle from '../assets/Rectangle'
 
 
 const Footer = () => {
   return (
     <>
+      
       <div className=' box-border flex h-275  items-center justify-between aling bg-black text-white '>
         <div className='flex flex-col items-start justify-center w-[145px] h-[150px] ml-[50px] mb-4' >
           <GuitarIcon/> 

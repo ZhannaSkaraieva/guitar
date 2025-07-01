@@ -4,15 +4,26 @@ import { Home } from '../pages/home/Home';
 import About from '../pages/about/About';
 import Wherebuy from '../pages/wherebuy/Wherebuy';
 import Cart from '../pages/cart/Cart';
+import Catalog from '../pages/catalog/Catalog';
+
+const routeArr = [
+    { path: '/', element: <Home /> },
+    { path: 'catalog', element: <Catalog /> },
+    { path: 'catalog/:guitarId', element: <Catalog /> },
+    { path: 'about', element: <About /> },
+    { path: 'wherebuy', element: <Wherebuy /> },
+    { path: 'cart', element: <Cart /> },
+  ];
 
 export default function AppRoutes() {
     return (
         <Routes>
             <Route index element={<Home />} />
-            <Route path='/:guitarId' element={<Home />} /> {/** : -  «динамический сегмент» */}
-            <Route path="about" element={<About />} />
-            <Route path="wherebuy" element={<Wherebuy />} />
-            <Route path="cart" element={<Cart />} />
+      
+      {/* МАРШРУТЫ */}
+            {routeArr.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+            ))}
         </Routes>
     );
 }
