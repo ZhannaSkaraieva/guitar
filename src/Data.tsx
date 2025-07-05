@@ -1,8 +1,42 @@
-
-const GUITARS = [
-    { category: "Элетрогитара", price: "129500", stocked: true, name: "СURT Z30 Plus Acoustics",strings:7},
-    {category: "Элетрогитара", price: "9700", stocked: true, name: "СURT Z30 Plus", strings:6},
-    {category: "Акустическая", price: "51100", stocked: true, name: "Честер Bass", strings:7},
-    {category: "Укулеле", price: "0", stocked: false, name: "Укулеле", strings:4},
-  ];
-  
+const Guitars = [
+  {
+    id: 1,
+    type: "Элетрогитара",
+    image: "/image/ElectroAcoustic.png",
+    price: "129500",
+    stocked: true,
+    title: "СURT Z30 Plus Acoustics",
+    strings: 7,
+    article: "SO754565",
+  },
+  {
+    id: 2,
+    type: "Элетрогитара",
+    image: "/image/Electro.png",
+    price: "9700",
+    stocked: true,
+    title: "СURT Z30 Plus",
+    strings: 6,
+    article: "SO754566",
+  },
+  {
+    id: 3,
+    type: "Акустическая",
+    image: "/image/ElectroBass.png",
+    price: "51100",
+    stocked: true,
+    title: "Честер Bass",
+    strings: 7,
+    article: "SO754567",
+  },
+  {
+    id: 4,
+    type: "Укулеле",
+    image: "/image/Ukulele.png",
+    price: "0",
+    stocked: false,
+    title: "Укулеле",
+    strings: 4,
+    article: "SO754568",
+  },
+];

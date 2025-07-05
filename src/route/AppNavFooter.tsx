@@ -1,16 +1,29 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const navItemsFooter = [
+  { to: "/wherebuy", label: "Где купить?" },
+  { to: "/blog", label: "Блог" },
+  { to: "/faq", label: "Вопрос - ответ" },
+  { to: "/return", label: "Возврат" },
+  { to: "/servicecenter", label: "Сервис-центры" },
+];
 
 const AppNavFooter = () => {
   return (
-    <nav className=' h-[10px] font-[Open Sans]  font-normal text-[10px] leading-[20px]'>
-      <NavLink to="/wherebuy" end className=' flex items-start justify-start whitespace-nowrap'>Где купить?</NavLink>
-      <NavLink to="/blog" end className=' flex items-start justify-start whitespace-nowrap'>Блог</NavLink>
-      <NavLink to="/faq" end className=' flex items-start justify-start whitespace-nowrap'>Вопрос - ответ</NavLink>
-      <NavLink to="/return" end className=' flex iitems-start justify-start whitespace-nowrap'>Возврат</NavLink>
-      <NavLink to="/servicecenters" end className=' flex items-start justify-start whitespace-nowrap'>Сервис-центры</NavLink>
+    <nav className=" h-[10px] font-[Open Sans]  font-normal text-[10px] leading-[20px]">
+      {navItemsFooter.map(({ to, label }) => (
+        <NavLink
+          key={to}
+          to={to}
+          end
+          className=" flex items-start justify-start whitespace-nowrap"
+        >
+          {label}
+        </NavLink>
+      ))}
     </nav>
-  )
-}
+  );
+};
 
-export default AppNavFooter
+export default AppNavFooter;

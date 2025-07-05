@@ -1,11 +1,10 @@
-
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.js'
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.js";
 import { BrowserRouter } from "react-router";
-import React from 'react';
+import React from "react";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 if (rootElement) {
   createRoot(rootElement).render(
     <BrowserRouter>

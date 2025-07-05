@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const wherebuy = () => {
-  return (
-    <div>wherebuy</div>
-  )
-}
+  return <div>wherebuy</div>;
+};
 
-export default wherebuy
+export default wherebuy;

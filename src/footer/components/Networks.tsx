@@ -1,11 +1,11 @@
-import React from 'react'
-import ScypeIcon from '../../assets/ScypeIcon'
-import VscoIcon from '../../assets/VscoIcon'
-import PinterestIcon from '../../assets/PinterestIcon'
+import React from "react";
+import ScypeIcon from "../../assets/ScypeIcon";
+import VscoIcon from "../../assets/VscoIcon";
+import PinterestIcon from "../../assets/PinterestIcon";
 
 const Networks = () => {
   return (
-    < div className='flex flex-row items-center justify-center gap-20'>
+    <div className="flex flex-row items-center justify-center gap-1.25">
       <a>
         <ScypeIcon />
       </a>
@@ -15,8 +15,8 @@ const Networks = () => {
       <a>
         <PinterestIcon />
       </a>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Networks
+export default Networks;

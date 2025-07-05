@@ -1,8 +1,8 @@
 import React from "react";
 
-const GuitarIcon = () => {
+const IconsBar = () => {
   return (
-    <div>
+    <>
       <svg
         width="70"
         height="70"
@@ -51,8 +51,8 @@ const GuitarIcon = () => {
           stroke-width="0.4"
         />
       </svg>
-    </div>
+    </>
   );
 };
 
-export default GuitarIcon;
+export default IconsBar;
