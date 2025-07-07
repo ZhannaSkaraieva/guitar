@@ -14,7 +14,7 @@ const Footer = () => {
       </div>
 
       {/**О НАС */}
-      <div className=" box-border md:w-[9rem] xl:w-48 h-min  flex-col ">
+      <div className=" box-border sm:w-[9rem] xl:w-48 h-min  flex-col ">
         <div className=" w-full max-sm:text-center font-[Droid Sans] font-normal text-sm xl:text-2xl leading-[2.8rem] tracking-widest">
           <h5 className="">О нас</h5>
         </div>
@@ -30,7 +30,7 @@ const Footer = () => {
       </div>
 
       {/**ИНФОРМАЦИЯ */}
-      <div className="w-[9rem] xl:w-48 h-min flex-col ">
+      <div className="sm:w-[9rem] xl:w-48 h-min flex-col ">
         <div className=" w-full max-sm:text-center font-[Droid Sans] font-normal text-sm xl:text-2xl leading-[2.8rem] tracking-widest">
           <h5 className="">Информация</h5>
         </div>
@@ -40,7 +40,7 @@ const Footer = () => {
       </div>
 
       {/**КОНТАКТЫ */}
-      <div className="w-[9rem] xl:w-48 h-min flex-col ">
+      <div className="sm:w-[9rem] xl:w-48 h-min flex-col ">
         <div className=" w-full max-sm:text-center font-[Droid Sans] font-normal text-sm xl:text-2xl leading-[2.8rem] tracking-widest">
           <h5 className="">Контакты</h5>
         </div>

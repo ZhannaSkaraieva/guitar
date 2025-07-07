@@ -11,7 +11,7 @@ const navItemsFooter = [
 
 const AppNavFooter = () => {
   return (
-    <nav className=" h-min  font-[Open Sans]  font-normal text-[0.63rem] xl:text-sm leading-[1.25rem] flex flex-col max-sm:flex-row max-sm:gap-4">
+    <nav className=" h-min  font-[Open Sans] max-sm:items-center font-normal text-[0.63rem] xl:text-sm leading-[1.25rem] flex flex-col max-sm:flex-row max-sm:gap-4">
       {navItemsFooter.map(({ to, label }) => (
         <NavLink
           key={to}
