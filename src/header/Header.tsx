@@ -1,47 +1,43 @@
 import React from "react";
-
-import LoupeIcon from "../assets/LoupeIcon";
-import CartIcon from "../assets/CartIcon";
-import IconsBar from "../assets/IconsBar";
+import LoupeIcon from "./components/LoupeIcon";
+import CartIcon from "./components/CartIcon";
 import AppNav from "../route/AppNav";
 import { NavLink } from "react-router-dom";
+import HeaderIcon from "./components/HeaderIcon";
 
 export const Header = () => {
   return (
-    <div className="  box-border flex flex-row items-center justify-around aling bg-black text-white lg:h-27 xl:h-30">
+    <div className="box-border w-full h-[70px] md:h-[70px] lg:h-[90px] flex flex-row items-center px-4 sm:px-6 md:px-8 lg:px-10  bg-black text-white">
       {/** ЛОГОТИП */}
-      <div className="box-border flex items-center">
+      <div className="">
         <NavLink to="/" end>
-          <IconsBar />
+          <HeaderIcon />
         </NavLink>
       </div>
 
       {/** НАВИГАЦИОННОЕ МЕНЮ */}
-      <div className="box-border flex w-[355px] h-[70px] px-6 items-center ">
+      <div className="ml-4">
         <AppNav />
       </div>
 
       {/** ПОИСК */}
-      <div className=" relative flex">
-        <div className="pointer-events-auto absolute">
+      <div className="relative flex w-[18.75rem] max-md:w-[2.5rem] h-10 ml-auto">
+        <div>
           <LoupeIcon />
         </div>
         <input
           type="text"
           placeholder="Search?"
-          className="w-[300px] h-10 border pl-10"
+          className="w-full max-md:border-none border border-white pl-10"
         />
       </div>
 
       {/** КОРЗИНА */}
-      <nav className="w-10 h-10 flex items-center justify-center mx-1.25">
-        <NavLink
-          to="/cart"
-          className="flex items-center justify-center w-full h-full"
-        >
+      <div className="flex items-center justify-center w-10 lg:w-15 h-10 lg:h-15">
+        <NavLink to="/cart">
           <CartIcon />
         </NavLink>
-      </nav>
+      </div>
     </div>
   );
 };

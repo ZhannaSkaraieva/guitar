@@ -4,7 +4,7 @@ import Line19 from "../assets/Line19";
 
 const CheckBox = () => {
   return (
-    <div className="w-3xs h-auto  mx-10">
+    <div className="w-full h-auto ">
       <h1 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
         Фильтр
       </h1>
@@ -21,13 +21,13 @@ const CheckBox = () => {
           <input
             type="number"
             placeholder="1000"
-            className="w-[85px] h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
+            className="w-full h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
           />
           <Line19 />
           <input
             type="number"
             placeholder="3000"
-            className="w-[85px] h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
+            className="w-full h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
           />
         </div>
       </div>

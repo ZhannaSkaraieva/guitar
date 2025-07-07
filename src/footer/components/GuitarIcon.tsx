@@ -4,6 +4,7 @@ const GuitarIcon = () => {
   return (
     <div>
       <svg
+        className="max-sm:hidden "
         width="70"
         height="70"
         viewBox="0 0 70 70"

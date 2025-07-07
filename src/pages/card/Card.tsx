@@ -1,7 +1,12 @@
 import React from "react";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const cart = () => {
-  return <div>cart</div>;
+  return (
+    <>
+      <Breadcrumb />
+    </>
+  );
 };
 
 export default cart;

@@ -6,7 +6,7 @@ const Breadcrumb = () => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   return (
-    <nav className="">
+    <nav className="max-sm:hidden">
       <ul>
         <li>
           <Link to="/" className=" ">

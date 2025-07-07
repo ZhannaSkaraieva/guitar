@@ -4,7 +4,7 @@ const cartList = [{}];
 
 const Cards = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 mr-10">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mr-10">
       <div className="block  bg-white">
         <a href="#!">
           <img

@@ -2,17 +2,25 @@ import React from "react";
 
 import Cards from "../../components/Cards";
 import CheckBox from "../../components/CheckBox";
+import Breadcrumb from "../../components/Breadcrumb";
+import Pagination from "./components/Pagination";
 
 const Catalog = () => {
   return (
-    <div className="flex flex-row">
-      <div className="basis-1/4">
-        <CheckBox />
+    <>
+      <Breadcrumb />
+      <div className="w-full flex flex-col md:flex-row">
+        <div className="w-full md:w-1/4 max-sm:px-4 max-sm:mb-4">
+          <CheckBox />
+        </div>
+        <div className="w-full md:w-3/4 ">
+          <Cards />
+        </div>
       </div>
-      <div className="basis-3/4">
-        <Cards />
+      <div className="flex justify-end">
+        <Pagination />
       </div>
-    </div>
+    </>
   );
 };
 

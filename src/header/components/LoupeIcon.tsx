@@ -4,7 +4,7 @@ const LoupeIcon = () => {
   return (
     <>
       <svg
-        className="absolute "
+        className="absolute pointer-events-none"
         width="40"
         height="41"
         viewBox="0 0 40 41"

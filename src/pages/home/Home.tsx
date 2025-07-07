@@ -8,6 +8,7 @@ export const Home = () => {
 
   return (
     <>
+      <Breadcrumb />
       <div className="mt-20">
         <a
           className="px-5 py-2 bg-amber-600"

@@ -5,7 +5,8 @@ import About from "../pages/about/About";
 import Wherebuy from "../pages/wherebuy/Wherebuy";
 import Cart from "../pages/card/Card";
 import Catalog from "../pages/catalog/Catalog";
-import GuitarImage from "../components/GuitarImage";
+import GuitarImage from "../components/GuitarBG";
+import GuitarBG from "../components/GuitarBG";
 
 const routeArr = [
   { path: "/", element: <Home /> },
@@ -19,9 +20,8 @@ const routeArr = [
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route element={<GuitarImage />}>
+      <Route element={<GuitarBG />}>
         <Route index element={<Home />} />
-
         {/* МАРШРУТЫ */}
         {routeArr.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />

@@ -1,7 +1,12 @@
 import React from "react";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const wherebuy = () => {
-  return <div>wherebuy</div>;
+  return (
+    <>
+      <Breadcrumb />
+    </>
+  );
 };
 
 export default wherebuy;
