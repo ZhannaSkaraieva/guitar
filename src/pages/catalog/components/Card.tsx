@@ -1,16 +1,21 @@
 import React from "react";
+import { Guitar } from '../../../Data';
 
-const cartList = [{}];
 
-const Cards = () => {
+
+// Компонент Cards для отображения карточек товаров в каталоге
+interface GuitarProps {
+  guitar: Guitar;
+}
+const Card: React.FC<GuitarProps> = ({ guitar }) => {
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mr-10">
+    <>
       <div className="block  bg-white">
         <a href="#!">
           <img
             className=""
-            src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
-            alt=""
+            src={guitar.image}
+            alt={guitar.title}
           />
         </a>
         <div className="p-6">
@@ -29,8 +34,8 @@ const Cards = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Cards;
+export default Card;

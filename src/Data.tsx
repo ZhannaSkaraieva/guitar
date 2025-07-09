@@ -1,4 +1,20 @@
-const Guitars = [
+
+
+export interface Guitar {
+  id: number;
+  title: string;
+  reviews: string;
+  rating: number;
+  article: string;
+  type: string;
+  strings: number;
+  description: string;
+  price: string;
+  stocked: boolean; 
+  image: string;
+}
+
+const Guitars:Guitar[] = [
   {
     id: 1,
     title: "СURT Z30 Plus Acoustics",
@@ -10,7 +26,7 @@ const Guitars = [
     description: "Электрогитара с 7 струнами, идеальная для",
     price: "12000",
     stocked: true,
-    image: "/image/ElectroAcoustic.png",
+    image:"/image/ElectroAcoustic.png",
   },
   {
     id: 2,
@@ -23,7 +39,7 @@ const Guitars = [
     description: "Электрогитара с 6 струнами, идеальная для",
     price: "9700",
     stocked: true,
-    image: "/image/Electro.png",
+    image:"/image/Electro.png",
   },
   {
     id: 3,
@@ -36,7 +52,7 @@ const Guitars = [
     description: "Акустическая гитара с 7 струнами, идеальная для",
     price: "15000",
     stocked: true,
-    image: "/image/ElectroBass.png",
+    image:"/image/ElectroBass.png",
   },
   {
     id: 4,
@@ -49,6 +65,8 @@ const Guitars = [
     description: "Укулеле с 4 струнами, идеальная для",
     price: "0",
     stocked: false,
-    image: "/image/Ukulele.png",
+    image:"/image/Ukulele.png",
   },
 ];
+
+export default Guitars;

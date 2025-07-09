@@ -1,7 +1,8 @@
 import React from "react";
-import Line18 from "../assets/Line18";
-import Line19 from "../assets/Line19";
+import Line18 from "../../../assets/Line18";
+import Line19 from "../../../assets/Line19";
 
+// Компонент CheckBox для фильтрации товаров в каталоге
 const CheckBox = () => {
   return (
     <div className="w-full h-auto ">
