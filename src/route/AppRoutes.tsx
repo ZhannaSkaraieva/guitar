@@ -22,10 +22,9 @@ export default function AppRoutes() {
     <Routes>
       {/**ОТОБРАЖЕНИЕ ГИТАР НА ЗАДНЕМ ФОНЕ */}
       <Route element={<GuitarBG />}>
-
         {/* ГЛАВНАЯ СТРАНИЦА */}
         <Route index element={<Home />} />
-        
+
         {/* МАРШРУТЫ */}
         {routeArr.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />

@@ -1,9 +1,13 @@
 import React from "react";
 import Line18 from "../../../assets/Line18";
 import Line19 from "../../../assets/Line19";
+import Guitars, { Guitar } from '../../../Data';
 
+interface GuitarProps {
+  guitar: Guitar;
+}
 // Компонент CheckBox для фильтрации товаров в каталоге
-const CheckBox = () => {
+const CheckBox:React.FC<GuitarProps>  = ({guitar}) => {
   return (
     <div className="w-full h-auto ">
       <h1 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
@@ -42,7 +46,23 @@ const CheckBox = () => {
           Тип гитар
         </h2>
         <form className="flex flex-col w-full mt-4 ">
-          <label className="inline-flex items-center ">
+          {Guitars.map((guitar) => (
+            <label className="inline-flex items-center 
+                key={type}">
+                  <input
+                  className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
+                  type="checkbox"
+                  value=""
+                  />
+                  <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
+                  {guitar.type}
+                  </span>
+            </label>
+          ))}
+
+
+          {/*<label className="inline-flex items-center 
+                ">
             <input
               className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
               type="checkbox"
@@ -71,7 +91,7 @@ const CheckBox = () => {
             <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
               Укулеле
             </span>
-          </label>
+          </label>**/}
         </form>
       </div>
       <div className="my-6">

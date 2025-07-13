@@ -20,3 +20,5 @@ If you are developing a production application, we recommend using TypeScript wi
 7. npm install tailwindcss @tailwindcss/vite
 8. npm install typescript --save-dev
 9. npx tsc --init
+
+npx prettier . --write
