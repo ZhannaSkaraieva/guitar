@@ -7,7 +7,7 @@ export interface Guitar {
   type: string;
   strings: number;
   description: string;
-  price: string;
+  price: number;
   stocked: boolean;
   image: string;
 }
@@ -22,7 +22,7 @@ const Guitars: Guitar[] = [
     type: "Элетрогитара",
     strings: 7,
     description: "Электрогитара с 7 струнами, идеальная для",
-    price: "12000",
+    price: 12000,
     stocked: true,
     image: "/image/ElectroAcoustic.png",
   },
@@ -35,7 +35,7 @@ const Guitars: Guitar[] = [
     type: "Элетрогитара",
     strings: 6,
     description: "Электрогитара с 6 струнами, идеальная для",
-    price: "9700",
+    price: 9700,
     stocked: true,
     image: "/image/Electro.png",
   },
@@ -48,7 +48,7 @@ const Guitars: Guitar[] = [
     type: "Акустическая",
     strings: 7,
     description: "Акустическая гитара с 7 струнами, идеальная для",
-    price: "15000",
+    price: 15000,
     stocked: true,
     image: "/image/ElectroBass.png",
   },
@@ -61,7 +61,20 @@ const Guitars: Guitar[] = [
     type: "Укулеле",
     strings: 4,
     description: "Укулеле с 4 струнами, идеальная для",
-    price: "0",
+    price: 4780,
+    stocked: false,
+    image: "/image/Ukulele.png",
+  },
+  {
+    id: 5,
+    title: "Укулеле",
+    reviews: "",
+    rating: 4.5,
+    article: "SO754568",
+    type: "Укулеле",
+    strings: 5,
+    description: "Укулеле с 4 струнами, идеальная для",
+    price: 6789,
     stocked: false,
     image: "/image/Ukulele.png",
   },

@@ -36,26 +36,23 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
           </div>
         </div>
 
-         
-        
-          {/* Кнопки Подробнее и Купить */} 
-          <div className="flex flex-row gap-2.5 justify-between p-2">
-            <button
-              type="button"
-              className=" bg-[#131212] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap"
-            >
-              Подробнее
-            </button>
-            <button 
-              type="button"
-              className="flex bg-[#C90606] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap text-inline-flex items-center gap-0.5"
-            >
-              <CartIcom />
-              Купить
-            </button>
-          </div>
+        {/* Кнопки Подробнее и Купить */}
+        <div className="flex flex-row gap-2.5 justify-between p-2">
+          <button
+            type="button"
+            className=" bg-[#131212] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap"
+          >
+            Подробнее
+          </button>
+          <button
+            type="button"
+            className="flex bg-[#C90606] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap text-inline-flex items-center gap-0.5"
+          >
+            <CartIcom />
+            Купить
+          </button>
         </div>
-      
+      </div>
     </>
   );
 };

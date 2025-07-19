@@ -25,7 +25,7 @@ const HeaderIcon = () => {
           x2="70"
           y2="38.8"
           stroke="white"
-          stroke-width="0.4"
+          strokeWidth="0.4"
         />
         <line
           x1="13.5821"
@@ -33,7 +33,7 @@ const HeaderIcon = () => {
           x2="70"
           y2="42.8"
           stroke="white"
-          stroke-width="0.4"
+          strokeWidth="0.4"
         />
         <line
           x1="55.3731"
@@ -41,7 +41,7 @@ const HeaderIcon = () => {
           x2="70"
           y2="46.8"
           stroke="white"
-          stroke-width="0.4"
+          strokeWidth="0.4"
         />
         <line
           x1="59.5522"
@@ -49,7 +49,7 @@ const HeaderIcon = () => {
           x2="70"
           y2="50.8"
           stroke="white"
-          stroke-width="0.4"
+          strokeWidth="0.4"
         />
       </svg>
     </>

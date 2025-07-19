@@ -1,13 +1,27 @@
 import React from "react";
 import Line18 from "../../../assets/Line18";
+import Guitars, { Guitar } from "../../../Data";
+import { useAppStore } from "../../../store/AppStore";
+import SortPrice from "./SortPrice";
 import Line19 from "../../../assets/Line19";
-import Guitars, { Guitar } from '../../../Data';
 
 interface GuitarProps {
   guitar: Guitar;
 }
 // Компонент CheckBox для фильтрации товаров в каталоге
-const CheckBox:React.FC<GuitarProps>  = ({guitar}) => {
+const CheckBox: React.FC<GuitarProps> = ({ guitar }) => {
+  const sortBy = useAppStore((state) => state.sortBy);
+  const setSortBy = useAppStore((state) => state.setSortBy);
+
+  const uniqueTypes = Guitars.map((guitar) => guitar.type).filter(
+    (type, index, self) => self.indexOf(type) === index,
+  );
+
+  const uniqueStrings = Guitars.map((guitar) => guitar.strings).filter(
+    (strings, index, self) => self.indexOf(strings) === index,
+  );
+
+  
   return (
     <div className="w-full h-auto ">
       <h1 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
@@ -19,22 +33,7 @@ const CheckBox:React.FC<GuitarProps>  = ({guitar}) => {
 
       {/**СОРТИРОВКА ПО ЦЕНЕ */}
       <div className="flex flex-col w-full">
-        <h2 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
-          Цена
-        </h2>
-        <div className="w-full flex justify-between items-center mt-10 font-[Open Sans] font-normal text-sm leading-[10px] tracking-[5%]">
-          <input
-            type="number"
-            placeholder="1000"
-            className="w-full h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
-          />
-          <Line19 />
-          <input
-            type="number"
-            placeholder="3000"
-            className="w-full h-[30px] px-2 py-2 border border-gray-300 ounded-xs"
-          />
-        </div>
+        <SortPrice guitar={guitar} />
       </div>
       <div className="my-6">
         <Line18 />
@@ -46,52 +45,21 @@ const CheckBox:React.FC<GuitarProps>  = ({guitar}) => {
           Тип гитар
         </h2>
         <form className="flex flex-col w-full mt-4 ">
-          {Guitars.map((guitar) => (
-            <label className="inline-flex items-center 
-                key={type}">
-                  <input
-                  className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-                  type="checkbox"
-                  value=""
-                  />
-                  <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-                  {guitar.type}
-                  </span>
+          {uniqueTypes.map((type) => (
+            <label className="inline-flex items-center" key={type}>
+              <input
+                className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
+                type="checkbox"
+                value=""
+                onClick={() => {
+                  setSortBy("type");
+                }}
+              />
+              <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
+                {type}
+              </span>
             </label>
           ))}
-
-
-          {/*<label className="inline-flex items-center 
-                ">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              Акустические гитары
-            </span>
-          </label>
-          <label className="inline-flex items-center ">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              Электрогитары
-            </span>
-          </label>
-          <label className="inline-flex items-center">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              Укулеле
-            </span>
-          </label>**/}
         </form>
       </div>
       <div className="my-6">
@@ -104,36 +72,18 @@ const CheckBox:React.FC<GuitarProps>  = ({guitar}) => {
           Количество струн
         </h2>
         <form className="flex flex-col w-full mt-4">
-          <label className="inline-flex items-center ">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              4
-            </span>
-          </label>
-          <label className="inline-flex items-center ">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              6
-            </span>
-          </label>
-          <label className="inline-flex items-center ">
-            <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
-              type="checkbox"
-              value=""
-            />
-            <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
-              7
-            </span>
-          </label>
+          {uniqueStrings.map((strings) => (
+            <label className="inline-flex items-center " key={strings}>
+              <input
+                className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
+                type="checkbox"
+                value=""
+              />
+              <span className="font-[Open Sans] font-normal text-xl leading-[100%] tracking-normal">
+                {strings}
+              </span>
+            </label>
+          ))}
         </form>
       </div>
       <div className="my-6">
