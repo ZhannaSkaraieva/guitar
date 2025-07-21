@@ -15,10 +15,6 @@ const SortPrice: React.FC<GuitarProps> = () => {
   const maxPrice = useAppStore((state) => state.maxPrice);
   const setMaxPrice = useAppStore((state) => state.setMaxPrice);
 
-  {/*const filterPrice = Guitars.filter(
-    (guitar) => (Number(minPrice) <= guitar.price && guitar.price <= Number(maxPrice)),
-  );**/}
-
   return (
     <>
       <h2 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
@@ -29,7 +25,7 @@ const SortPrice: React.FC<GuitarProps> = () => {
           type="number"
           placeholder="1000"
           className="w-full h-[30px] px-2 py-2 border border-gray-300 rounded-xs"
-          value={minPrice}
+          value={minPrice === 0 ? "" : minPrice}
           onChange={(e) => setMinPrice(Number(e.target.value))}
         />
         <Line19 />
@@ -38,7 +34,7 @@ const SortPrice: React.FC<GuitarProps> = () => {
           placeholder="3000"
           className="w-full h-[30px] px-2 py-2 border border-gray-300 rounded-xs"
           value={maxPrice}
-          onChange={(e) => setMaxPrice(Number(e.target.value))}
+          onChange={(e) => setMaxPrice (Number(e.target.value))}
         />
       </div>
     </>
