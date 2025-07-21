@@ -6,9 +6,11 @@ interface AppStore {
   maxPrice: number;
   setMaxPrice: (maxPrice: number) => void;
   sortByTypes: string[];
-  setSortByTypes: (sortByTypes: string) => void;
+  setSortByTypes: (type: string) => void;
   sortByStrings: number[];
   setSortByStrings: (sortByStrings: number) => void;
+  sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating"| "default";
+  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -19,7 +21,7 @@ export const useAppStore = create<AppStore>((set) => ({
   setMaxPrice: (maxPrice) => set(() => ({ maxPrice })),
 
   sortByTypes: [],
-  setSortByTypes: (type) =>
+  setSortByTypes: (type: string) =>
     set((state) => {
       const alreadySelected = state.sortByTypes.includes(type);
       return {
@@ -29,7 +31,7 @@ export const useAppStore = create<AppStore>((set) => ({
       };
     }),
 
-  sortByStrings: [] ,
+  sortByStrings: [],
   setSortByStrings: (string) =>
     set((state) => {
       const alreadySelected = state.sortByStrings.includes(string);
@@ -39,4 +41,7 @@ export const useAppStore = create<AppStore>((set) => ({
           : [...state.sortByStrings, string],
       };
     }),
+
+  sortBy: "default",
+  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => set(() => ({ sortBy })),
 }));

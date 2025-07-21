@@ -7,7 +7,7 @@ import Cart from "../pages/card/Card";
 import Catalog from "../pages/catalog/Catalog";
 import GuitarImage from "../components/GuitarBG";
 import GuitarBG from "../components/GuitarBG";
-import { Guitar } from '../Data';
+import { Guitar } from "../Data";
 
 const routeArr = [
   { path: "/", element: <Home /> },

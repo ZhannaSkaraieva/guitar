@@ -4,6 +4,7 @@ import Pagination from "./components/Pagination";
 import CheckBox from "./components/CheckBox";
 import CardList from "./components/CardList";
 import { Guitar } from "../../Data";
+import Sort from "./components/Sort";
 
 interface GuitarProps {
   guitar: Guitar;
@@ -18,6 +19,7 @@ const Catalog: React.FC<GuitarProps> = ({ guitar }) => {
           <CheckBox guitar={guitar} />
         </div>
         <div className="w-full md:w-3/4 ">
+          <Sort />
           <CardList />
         </div>
       </div>

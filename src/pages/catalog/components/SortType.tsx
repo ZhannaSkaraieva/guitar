@@ -21,9 +21,9 @@ export const SortType = () => {
       </h2>
       <form className="flex flex-col w-full mt-4 ">
         {uniqueTypes.map((type) => (
-          <label className="inline-flex items-center" key={type}>
+          <label className="  inline-flex items-center" key={type}>
             <input
-              className=" size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
+              className="size-[25px] mr-4 my-1 border-solid border-neutral-300 outline-none "
               type="checkbox"
               value={type}
               /*checked={sortByTypes.includes(type)}*/

@@ -12,9 +12,10 @@ const CardList = () => {
   const SortByTypes = useAppStore((state) => state.sortByTypes);
   const SortByStrings = useAppStore((state) => state.sortByStrings);
 
-  const filterGuitars = Guitars.filter((guitar) => {
-    const SortPrice =
-      Number(minPrice) <= guitar.price && guitar.price <= Number(maxPrice);
+  const SortBy = useAppStore((state) => state.sortBy);
+
+  let filteredGuitars = Guitars.filter((guitar) => {
+    const SortPrice = minPrice <= guitar.price && guitar.price <= maxPrice;
     const SortType =
       SortByTypes.length === 0 || SortByTypes.includes(guitar.type);
     const SortString =
@@ -22,9 +23,27 @@ const CardList = () => {
     return SortPrice && SortType && SortString;
   });
 
+  switch (SortBy) {
+  case "ArrowUp":
+    filteredGuitars.sort((a, b) => a.price - b.price);
+    break;
+  case "ArrowDown":
+    filteredGuitars.sort((a, b) => b.price - a.price);
+    break;
+  case "ArrowRating":
+    filteredGuitars.sort((a, b) => b.rating - a.rating);
+      break;
+  case "ArrowPrice":
+    filteredGuitars.sort((a, b) => a.price - b.price);
+    break;
+  default:
+    filteredGuitars = Guitars; // Default case, no sorting applied
+    break;
+}
+
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filterGuitars.map((guitar: Guitar) => (
+      {filteredGuitars.map((guitar: Guitar) => (
         <Card key={guitar.id} guitar={guitar} />
       ))}
     </div>

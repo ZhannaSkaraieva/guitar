@@ -34,7 +34,7 @@ const SortPrice: React.FC<GuitarProps> = () => {
           placeholder="3000"
           className="w-full h-[30px] px-2 py-2 border border-gray-300 rounded-xs"
           value={maxPrice}
-          onChange={(e) => setMaxPrice (Number(e.target.value))}
+          onChange={(e) => setMaxPrice(Number(e.target.value))}
         />
       </div>
     </>
