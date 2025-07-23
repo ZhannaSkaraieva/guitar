@@ -4,6 +4,7 @@ import Card from "./Card";
 import { Guitar } from "../../../Data";
 import { useAppStore } from "../../../store/AppStore";
 import { SortString } from "./SortString";
+import Pagination from "./Pagination";
 
 const CardList = () => {
   const minPrice = useAppStore((state) => state.minPrice);
@@ -14,12 +15,20 @@ const CardList = () => {
 
   const SortBy = useAppStore((state) => state.sortBy);
 
+  const currentPage = useAppStore((state) => state.curentPage);
+
+  const cardsPerPage = 6;
+  const indexOfLastCards = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCards - cardsPerPage;  
+  
   let filteredGuitars = Guitars.filter((guitar) => {
     const SortPrice = minPrice <= guitar.price && guitar.price <= maxPrice;
     const SortType =
       SortByTypes.length === 0 || SortByTypes.includes(guitar.type);
     const SortString =
       SortByStrings.length === 0 || SortByStrings.includes(guitar.strings);
+
+    
     return SortPrice && SortType && SortString;
   });
 
@@ -37,17 +46,28 @@ const CardList = () => {
     filteredGuitars.sort((a, b) => a.price - b.price);
     break;
   default:
-    filteredGuitars = Guitars; // Default case, no sorting applied
+    filteredGuitars = Guitars; 
     break;
-}
+  }
+  
+  const currentCards = filteredGuitars.slice(indexOfFirstCard, indexOfLastCards);
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredGuitars.map((guitar: Guitar) => (
+    <>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {currentCards.map((guitar: Guitar) => (
         <Card key={guitar.id} guitar={guitar} />
       ))}
-    </div>
+      </div>
+      <div className="flex justify-end">
+      <Pagination
+        cardsPerPage={cardsPerPage}
+        totalCards={filteredGuitars.length}
+      /></div>
+    </>
   );
 };
+
+
 
 export default CardList;

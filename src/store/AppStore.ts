@@ -11,6 +11,8 @@ interface AppStore {
   setSortByStrings: (sortByStrings: number) => void;
   sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating"| "default";
   setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => void;
+  curentPage: number;
+  setCurrentPage: (currentPage: number) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -44,4 +46,7 @@ export const useAppStore = create<AppStore>((set) => ({
 
   sortBy: "default",
   setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => set(() => ({ sortBy })),
+
+  curentPage: 1,
+  setCurrentPage: (curentPage) => set(() => ({ curentPage})),
 }));

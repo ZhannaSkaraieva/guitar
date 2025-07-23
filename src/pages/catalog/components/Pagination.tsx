@@ -1,50 +1,58 @@
 import React from "react";
+import { useAppStore } from "../../../store/AppStore";
 
-const Pagination = () => {
+interface PaginationProps {
+  cardsPerPage: number;
+  totalCards: number;
+}
+
+const Pagination: React.FC<PaginationProps> = ({
+  cardsPerPage,
+  totalCards,
+}) => {
+
+  const currentPage = useAppStore((state) => state.curentPage); 
+  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
+
+  const pageNumbers = [];
+  
+  for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+  const paginate = (pageNumber: number, e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
       <nav className="max-sm:hidden">
         <ul className="list-style-none flex">
-          <li>
-            <a className="pointer-events-none relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400">
-              Previous
-            </a>
-          </li>
-          <li>
-            <a
-              className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-              href="#!"
+          <button className=" relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300"
+            onClick={(e) => paginate(currentPage - 1, e)}
+            disabled={currentPage === 1}>
+              Назад
+          </button>
+          {pageNumbers.map((number) => (
+            <li key={number}>
+              <a
+                onClick={(e) => paginate(number, e)}
+                className={`relative block rounded px-3 py-1.5 text-sm transition-all duration-300 ${
+                  currentPage === number}`}
+                href="#!"
+              >
+                {number}
+              </a>
+            </li>
+          ))}
+            <button
+            className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300"
+            onClick={(e) => paginate(currentPage + 1, e)}
+            disabled={currentPage === pageNumbers[pageNumbers.length - 1]}
             >
-              1
-            </a>
-          </li>
-          <li aria-current="page">
-            <a
-              className="relative block rounded bg-primary-100 px-3 py-1.5 text-sm font-medium text-primary-700 transition-all duration-300"
-              href="#!"
-            >
-              2
-              <span className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]">
-                (current)
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-              href="#!"
-            >
-              3
-            </a>
-          </li>
-          <li>
-            <a
-              className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
-              href="#!"
-            >
-              Next
-            </a>
-          </li>
+              Далее
+            </button>
+          
         </ul>
       </nav>
     </>
