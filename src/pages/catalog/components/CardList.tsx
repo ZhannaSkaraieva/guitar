@@ -21,7 +21,7 @@ const CardList = () => {
   const indexOfLastCards = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCards - cardsPerPage;  
   
-  let filteredGuitars = Guitars.filter((guitar) => {
+  const filteredGuitars = Guitars.filter((guitar) => {
     const SortPrice = minPrice <= guitar.price && guitar.price <= maxPrice;
     const SortType =
       SortByTypes.length === 0 || SortByTypes.includes(guitar.type);
@@ -46,7 +46,7 @@ const CardList = () => {
     filteredGuitars.sort((a, b) => a.price - b.price);
     break;
   default:
-    filteredGuitars = Guitars; 
+    filteredGuitars.sort((a, b) => a.price - b.price); 
     break;
   }
   
