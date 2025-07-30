@@ -13,6 +13,12 @@ interface AppStore {
   setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => void;
   curentPage: number;
   setCurrentPage: (currentPage: number) => void;
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
+  inputSuggestions: string[];
+  setInputSuggestions: (inputSuggestions: string[]) => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -48,5 +54,14 @@ export const useAppStore = create<AppStore>((set) => ({
   setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => set(() => ({ sortBy })),
 
   curentPage: 1,
-  setCurrentPage: (curentPage) => set(() => ({ curentPage})),
+  setCurrentPage: (curentPage) => set(() => ({ curentPage })),
+  
+  inputValue: "",
+  setInputValue: (inputValue) => set(() => ({ inputValue })),
+
+  inputSuggestions: [],
+  setInputSuggestions: (inputSuggestions) => set(() => ({ inputSuggestions })),
+
+  isOpen: true,
+  setIsOpen: (isOpen) => set(() => ({ isOpen })),
 }));

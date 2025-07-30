@@ -2,7 +2,7 @@ import React from "react";
 import { Guitar } from "../../../Data";
 import Reviews from "./Reviews";
 import Rating from "./Rating";
-import CartIcom from "./CartIcom";
+import CartIcom from "../../../assets/CartIcom";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {

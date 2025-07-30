@@ -1,7 +1,7 @@
 import React from "react";
 import { Guitar } from "../../../Data";
-import IconArrowUp from "./IconArrowUp";
-import { IconArrowDown } from "./IconArrowDown";
+import IconArrowUp from "../../../assets/IconArrowUp";
+import { IconArrowDown } from "../../../assets/IconArrowDown";
 import { useAppStore } from "../../../store/AppStore";
 
 interface GuitarProps {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Guitars from "../../../Data";
 import Card from "./Card";
 import { Guitar } from "../../../Data";
@@ -16,6 +16,16 @@ const CardList = () => {
   const SortBy = useAppStore((state) => state.sortBy);
 
   const currentPage = useAppStore((state) => state.curentPage);
+  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
+
+  const inputValue = useAppStore((state) => state.inputValue);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [minPrice, maxPrice, SortByTypes, SortByStrings, inputValue]);
+  
+
+  
 
   const cardsPerPage = 6;
   const indexOfLastCards = currentPage * cardsPerPage;
@@ -27,9 +37,10 @@ const CardList = () => {
       SortByTypes.length === 0 || SortByTypes.includes(guitar.type);
     const SortString =
       SortByStrings.length === 0 || SortByStrings.includes(guitar.strings);
+    const inputGuitars = inputValue.trim() === "" || guitar.title.toLowerCase().includes(inputValue.toLowerCase())||
+      guitar.type.toLowerCase().includes(inputValue.toLowerCase());
 
-    
-    return SortPrice && SortType && SortString;
+    return SortPrice && SortType && SortString && inputGuitars;
   });
 
   switch (SortBy) {
@@ -51,6 +62,8 @@ const CardList = () => {
   }
   
   const currentCards = filteredGuitars.slice(indexOfFirstCard, indexOfLastCards);
+
+  
 
   return (
     <>

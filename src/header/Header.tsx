@@ -1,9 +1,10 @@
 import React from "react";
-import LoupeIcon from "./components/LoupeIcon";
-import CartIcon from "./components/CartIcon";
+import LoupeIcon from "../assets/LoupeIcon";
+import CartIcon from "../assets/CartIcon";
 import AppNav from "../route/AppNav";
 import { NavLink } from "react-router-dom";
-import HeaderIcon from "./components/HeaderIcon";
+import HeaderIcon from "../assets/HeaderIcon";
+import SearchBar from "./components/SearchBar";
 
 export const Header = () => {
   return (
@@ -21,16 +22,9 @@ export const Header = () => {
       </div>
 
       {/** ПОИСК */}
-      <div className="relative flex w-[18.75rem] max-md:w-[2.5rem] h-10 ml-auto">
-        <div>
-          <LoupeIcon />
-        </div>
-        <input
-          type="text"
-          placeholder="Search?"
-          className="w-full max-md:border-none border border-white pl-10"
-        />
-      </div>
+      
+      <SearchBar/>
+      
 
       {/** КОРЗИНА */}
       <div className="flex items-center justify-center w-10 lg:w-15 h-10 lg:h-15">

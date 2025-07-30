@@ -1,6 +1,6 @@
 import React from "react";
-import StarIcon from "./StarIcon";
-import VectorIcon from "./VectorIcon";
+import StarIcon from "../../../assets/StarIcon";
+import VectorIcon from "../../../assets/VectorIcon";
 
 const Reviews = () => {
   return (

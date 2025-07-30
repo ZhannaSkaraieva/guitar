@@ -1,6 +1,6 @@
 import React from "react";
 import Networks from "./components/Networks";
-import GuitarIcon from "./components/GuitarIcon";
+import GuitarIcon from "../assets/GuitarIcon";
 import ClockIcon from "../assets/ClockIcon";
 import PhoneIcon from "../assets/PhoneIcon";
 import AppNavFooter from "../route/AppNavFooter";
