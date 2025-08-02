@@ -1,6 +1,7 @@
 export interface Guitar {
   id: number;
   title: string;
+  vendorCode: string;
   reviews: string;
   rating: number;
   article: string;
@@ -16,6 +17,7 @@ const Guitars: Guitar[] = [
   {
     id: 1,
     title: "СURT Z30 Plus Acoustics",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4,
     article: "SO754565",
@@ -29,6 +31,7 @@ const Guitars: Guitar[] = [
   {
     id: 2,
     title: "СURT Z30 Plus",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754566",
@@ -42,6 +45,7 @@ const Guitars: Guitar[] = [
   {
     id: 3,
     title: "Честер Bass",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754567",
@@ -55,6 +59,7 @@ const Guitars: Guitar[] = [
   {
     id: 4,
     title: "Укулеле",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",
@@ -67,7 +72,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 5,
-    title: "Укулеле",
+    title: "Укулеле1",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",
@@ -80,7 +86,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 6,
-    title: "СURT Z30 Plus Acoustics",
+    title: "СURT Z30 Plus Acoustics1",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4,
     article: "SO754565",
@@ -93,7 +100,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 7,
-    title: "СURT Z30 Plus",
+    title: "СURT Z30 Plus1",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754566",
@@ -106,7 +114,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 8,
-    title: "Честер Bass",
+    title: "Честер Bass1",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754567",
@@ -119,7 +128,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 9,
-    title: "Укулеле",
+    title: "Укулеле2",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",
@@ -132,7 +142,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 10,
-    title: "Укулеле",
+    title: "Укулеле3",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",
@@ -145,7 +156,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 11,
-    title: "СURT Z30 Plus Acoustics",
+    title: "СURT Z30 Plus Acoustics2",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4,
     article: "SO754565",
@@ -158,7 +170,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 12,
-    title: "СURT Z30 Plus",
+    title: "СURT Z30 Plus2",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754566",
@@ -171,7 +184,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 13,
-    title: "Честер Bass",
+    title: "Честер Bass2",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754567",
@@ -184,7 +198,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 14,
-    title: "Укулеле",
+    title: "Укулеле4",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",
@@ -197,7 +212,8 @@ const Guitars: Guitar[] = [
   },
   {
     id: 15,
-    title: "Укулеле",
+    title: "Укулеле5",
+    vendorCode: "SO757575",
     reviews: "",
     rating: 4.5,
     article: "SO754568",

@@ -1,10 +1,12 @@
 import React from "react";
 import LoupeIcon from "../assets/LoupeIcon";
-import CartIcon from "../assets/CartIcon";
+import CartIcon from "../assets/BasketIcon";
 import AppNav from "../route/AppNav";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import HeaderIcon from "../assets/HeaderIcon";
 import SearchBar from "./components/SearchBar";
+import Basket from "../pages/basket/Basket";
+import BasketIcon from "../assets/BasketIcon";
 
 export const Header = () => {
   return (
@@ -22,16 +24,17 @@ export const Header = () => {
       </div>
 
       {/** ПОИСК */}
-      
-      <SearchBar/>
-      
+
+      <SearchBar />
 
       {/** КОРЗИНА */}
-      <div className="flex items-center justify-center w-10 lg:w-15 h-10 lg:h-15">
-        <NavLink to="/cart">
-          <CartIcon />
-        </NavLink>
-      </div>
+
+      <Link
+        to="/basket"
+        className="flex items-center justify-center w-10 lg:w-35 h-10 lg:h-35"
+      >
+        <BasketIcon />
+      </Link>
     </div>
   );
 };

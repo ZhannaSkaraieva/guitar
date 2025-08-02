@@ -1,12 +1,10 @@
 import React from "react";
 
-const CartIcon = () => {
+const BasketIcon = () => {
   return (
     <>
       <svg
-        className=""
-        width="40"
-        height="40"
+        className="w-[40px] h-[40px] sm:w-[55px] sm:h-[55px] lg:w-[70px] lg:h-[70px]"
         viewBox="0 0 40 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,4 +18,4 @@ const CartIcon = () => {
   );
 };
 
-export default CartIcon;
+export default BasketIcon;

@@ -5,13 +5,13 @@ import { IconArrowDown } from "../../../assets/IconArrowDown";
 import { useAppStore } from "../../../store/AppStore";
 
 interface GuitarProps {
-  guitar: Guitar;
+  guitar: Guitar[];
 }
 
 const Sort: React.FC<GuitarProps> = () => {
-    const sortBy = useAppStore((state) => state.sortBy);
-    const setSortBy = useAppStore((state) => state.setSortBy);
- 
+  const sortBy = useAppStore((state) => state.sortBy);
+  const setSortBy = useAppStore((state) => state.setSortBy);
+
   return (
     <div className="h-6 mb-10 flex justify-between items-center">
       <div className="flex items-start space-x-4">
@@ -21,7 +21,7 @@ const Sort: React.FC<GuitarProps> = () => {
         <button
           className="font-[Open Sans] font-normal not-italic text-base leading-none tracking-[5%] text-neutral-950 hover:text-neutral-600"
           onClick={() => {
-            setSortBy("ArrowPrice");
+            setSortBy("SortPrice");
           }}
         >
           по цене
@@ -29,7 +29,7 @@ const Sort: React.FC<GuitarProps> = () => {
         <button
           className="font-[Open Sans] font-normal not-italic text-base leading-none tracking-[5%] text-neutral-950 hover:text-neutral-600"
           onClick={() => {
-            setSortBy("ArrowRating");
+            setSortBy("SortRating");
           }}
         >
           по популярности
@@ -45,7 +45,7 @@ const Sort: React.FC<GuitarProps> = () => {
         </button>
         <button
           onClick={() => {
-            setSortBy ("ArrowDown" );
+            setSortBy("ArrowDown");
           }}
         >
           <IconArrowDown />

@@ -2,7 +2,8 @@ import React from "react";
 import { Guitar } from "../../../Data";
 import Reviews from "./Reviews";
 import Rating from "./Rating";
-import CartIcom from "../../../assets/CartIcom";
+import { Link } from "react-router-dom";
+import CardBasketIcon from "../../../assets/CardBasketIcon";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
@@ -38,17 +39,20 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
 
         {/* Кнопки Подробнее и Купить */}
         <div className="flex flex-row gap-2.5 justify-between p-2">
+          <Link to={`/catalog/${guitar.id}`} className="flex-1">
+            <button
+              type="button"
+              className=" bg-[#131212] w-full h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap items-center justify-center"
+            >
+              Подробнее
+            </button>
+          </Link>
+
           <button
             type="button"
-            className=" bg-[#131212] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap"
+            className="flex-1 flex bg-[#C90606]  h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
           >
-            Подробнее
-          </button>
-          <button
-            type="button"
-            className="flex bg-[#C90606] h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white text-nowrap text-inline-flex items-center gap-0.5"
-          >
-            <CartIcom />
+            <CardBasketIcon />
             Купить
           </button>
         </div>

@@ -1,11 +1,10 @@
 import React from "react";
 
-const CartIcom = () => {
+const CardBasketIcon = () => {
   return (
     <>
       <svg
-        width="13"
-        height="13"
+        className="w-[13px] h-[13px] sm:w-[16px] sm:h-[16px] lg:w-[19px] lg:h-[19px]"
         viewBox="0 0 13 13"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,4 +18,4 @@ const CartIcom = () => {
   );
 };
 
-export default CartIcom;
+export default CardBasketIcon;

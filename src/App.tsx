@@ -7,13 +7,15 @@ import Rectangle from "./assets/Rectangle";
 
 function App() {
   return (
-    <div className="w-full min-h-screen flex flex-col ">
+    <>
+      {/**<div className="w-full min-h-screen flex flex-col ">
       <Header />
-      <main className="flex-grow">
-        <AppRoutes />
-      </main>
+      <main className="flex-grow">*/}
+      <AppRoutes />
+      {/**</main>
       <Footer />
-    </div>
+    </div>*/}
+    </>
   );
 }
 export default App;

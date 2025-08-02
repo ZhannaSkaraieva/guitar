@@ -5,7 +5,7 @@ import { useAppStore } from "../../store/AppStore";
 export const Home = () => {
   return (
     <>
-      <Breadcrumb />
+      <p>HOME</p>
     </>
   );
 };

@@ -8,7 +8,7 @@ import { SortType } from "./SortType";
 import { SortString } from "./SortString";
 
 interface GuitarProps {
-  guitar: Guitar;
+  guitar: Guitar[];
 }
 // Компонент CheckBox для фильтрации товаров в каталоге
 const CheckBox: React.FC<GuitarProps> = ({ guitar }) => {

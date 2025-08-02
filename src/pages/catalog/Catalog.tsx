@@ -6,18 +6,17 @@ import { Guitar } from "../../Data";
 import Sort from "./components/Sort";
 
 interface GuitarProps {
-  guitar: Guitar;
-};
+  guitar: Guitar[];
+}
 
-interface PaginationProps { 
+interface PaginationProps {
   cardsPerPage: number;
   filteredGuitars: Guitar[];
 }
 
-const Catalog: React.FC<GuitarProps> = ({ guitar}) => {
+const Catalog: React.FC<GuitarProps> = ({ guitar }) => {
   return (
     <>
-      <Breadcrumb />
       <div className="w-full flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-1/4 max-sm:px-4 max-sm:mb-4">
           <CheckBox guitar={guitar} />

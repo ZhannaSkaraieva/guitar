@@ -9,8 +9,10 @@ interface AppStore {
   setSortByTypes: (type: string) => void;
   sortByStrings: number[];
   setSortByStrings: (sortByStrings: number) => void;
-  sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating"| "default";
-  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => void;
+  sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating" | "default";
+  setSortBy: (
+    sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating",
+  ) => void;
   curentPage: number;
   setCurrentPage: (currentPage: number) => void;
   inputValue: string;
@@ -51,11 +53,12 @@ export const useAppStore = create<AppStore>((set) => ({
     }),
 
   sortBy: "default",
-  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "ArrowPrice" | "ArrowRating") => set(() => ({ sortBy })),
+  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating") =>
+    set(() => ({ sortBy })),
 
   curentPage: 1,
   setCurrentPage: (curentPage) => set(() => ({ curentPage })),
-  
+
   inputValue: "",
   setInputValue: (inputValue) => set(() => ({ inputValue })),
 

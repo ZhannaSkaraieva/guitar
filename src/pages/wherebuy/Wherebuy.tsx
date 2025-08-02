@@ -4,7 +4,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 const wherebuy = () => {
   return (
     <>
-      <Breadcrumb />
+      <p>Where</p>
     </>
   );
 };
