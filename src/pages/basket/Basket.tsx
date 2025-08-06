@@ -14,54 +14,75 @@ const Basket: React.FC<BasketProps> = ({ guitars }) => {
     <>
       <div className="">
         {/**ЛИНИЯ */}
-        <div className="flex flex-1 items-center justify-center w-full h-full">
+        <div className="flex flex-1 items-center justify-center w-full h-full my-8">
           <Line3 />
-        </div>
-
-        {/**УДАЛЕНИЕ */}
-        <div className=" flex items-start my-6">
-          <button>
-            <CrossIcon />
-          </button>
         </div>
 
         {/**Отображение товара в корзине */}
-        <div className="flex flex-row">
-          <div className="basis-1/6 flex items-center justify-center">
-            <img src="./../../image/Electro.png"  alt={guitars.title} />
-          </div>
-          <div className="basis-2/6 flex flex-col items-start ">
-            <h3 className="my-4 font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">title</h3>
-            <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">article</p>
-            <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">type</p>
-            <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">strings</p>
-          </div>
-          <div className="basis-1/6 flex items-center justify-center font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right"> 20000,00</div>
+        {guitars.map((guitar, id) => (
+          <div key={id}>
+            <div className="flex flex-row">
 
-          <div className="basis-1/6 flex flex-row  items-center justify-center ">
-            <div >
-              <button className=" flex w-7 h-7 border-y border-l border-black items-center justify-center ">
-                <MinusIcon />
-              </button>
-            </div>
-            <div className=" flex w-7 h-7 border border-black items-center justify-center ">
-              <input />
-            </div>
-            <div>
-              <button className=" flex w-7 h-7 border-y border-r border-black items-center justify-center ">
-                <PlusIcon />
-              </button>
-            </div>
-          </div>
-          <div className="basis-1/6 flex items-center justify-center font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
-            <div> 2000,00</div>
-          </div>
-        </div>
+              {/**УДАЛЕНИЕ */}
+              <div className=" flex justify-end items-start">
+                <button>
+                  <CrossIcon />
+                </button>
+              </div>
 
-        {/**ЛИНИЯ */}
-        <div className="flex flex-1 items-center justify-center w-full h-full">
-          <Line3 />
-        </div>
+              {/**ОПИСАНИЕ ГИТАРЫ */}
+              <div className="basis-1/6 flex items-center justify-center">
+                <img src={guitar.image} alt={guitar.title} />
+              </div>
+              <div className="basis-2/6 flex flex-col items-start ">
+                <h3 className="my-4 font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
+                  {guitar.title}
+                </h3>
+                <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">
+                  Артикул: {guitar.article}
+                </p>
+                <div className=" flex">
+                <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">
+                  {guitar.type} ,
+                </p>
+                <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">
+                  {guitar.strings} струнная
+                </p></div>
+              </div>
+              <div className="basis-1/6 flex items-center justify-center font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">
+                {" "}
+                {guitar.price} ₴
+              </div>
+
+              {/**ВЫБОР КОЛЛИЧЕСТВА */}
+
+              <div className="basis-1/6 flex flex-row  items-center justify-center ">
+                <div>
+                  <button className=" flex w-7 h-7 border-y border-l border-black items-center justify-center ">
+                    <MinusIcon />
+                  </button>
+                </div>
+                <div className=" flex w-7 h-7 border border-black items-center justify-center ">
+                  <input />
+                </div>
+                <div>
+                  <button className=" flex w-7 h-7 border-y border-r border-black items-center justify-center ">
+                    <PlusIcon />
+                  </button>
+                </div>
+              </div>
+              <div className="basis-1/6 flex items-center justify-center font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
+                <div> {guitar.price} ₴</div>
+              </div>
+
+
+              {/**ЛИНИЯ */}
+            </div>
+            <div className="flex flex-1 items-center justify-center w-full h-full my-8">
+              <Line3 />
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
