@@ -1,13 +1,26 @@
 import React from "react";
-import Breadcrumb from "../../components/Breadcrumb";
+import { useParams } from "react-router-dom";
+import { Guitar } from "../../Data";
 
-export const ProductPage = () => {
+interface ProductPageProps {
+  guitars: Guitar[];
+}
+
+export const ProductPage: React.FC<ProductPageProps> = ({ guitars }) => {
+  const { id } = useParams();
+  const result = guitars.find((g) => g.id === Number(id));
   return (
     <>
-      console.log("Я на странице товара");
-      <div className="min-h-screen text-white text-3xl p-10">
-        Здесь будет карточка товара
+      <div className="min-h-screen text-black text-3xl p-10">
+        <p>Здесь будет карточка товара</p>
+        {id};
       </div>
+      {guitars.map((guitar) => (
+        <div key={guitar.id}>
+          <img src={guitar.image} alt={guitar.title} />
+          <p>{guitar.title}</p>
+        </div>
+      ))}
     </>
   );
 };
