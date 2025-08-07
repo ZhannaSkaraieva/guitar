@@ -9,7 +9,7 @@ function Line3() {
           x2="940"
           y2="0.65"
           stroke="#DDDADA"
-          stroke-width="0.7"
+          strokeWidth="0.7"
         />
       </svg>
     </>

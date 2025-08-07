@@ -28,7 +28,7 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
         <div className=" flex flex-col p-2">
           {/* Заголовок и цена */}
           <div className="flex flex-row justify-between items-start">
-            <h5 className="font-[Open Sans] font-normal not-italic text-sm/tight leading-none tracking-wider">
+            <h5 className="font-[Open_Sans] font-normal not-italic text-sm/tight leading-none tracking-wider">
               {guitar.title}
             </h5>
             <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 text-nowrap">
