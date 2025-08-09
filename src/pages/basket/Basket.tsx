@@ -75,7 +75,6 @@ const Basket: React.FC<BasketProps> = ({ guitars }) => {
               </div>
               <div className="basis-1/6 flex items-center justify-center font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
                 <div>
-                  
                   {new Intl.NumberFormat("de-DE", {
                     style: "currency",
                     currency: "UAH",
@@ -117,11 +116,15 @@ const Basket: React.FC<BasketProps> = ({ guitars }) => {
           <div className="w-[220px]">
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[15%] text-start">
               <span>Всего:</span>
-              <span className="font-[Droid_Sans] font-normal text-right">52 000 UAH</span>
+              <span className="font-[Droid_Sans] font-normal text-right">
+                52 000 UAH
+              </span>
             </div>
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-start">
               <span>Скидка:</span>
-              <span className="font-normal text-[#C90606] text-right">- 3 000 UAH</span>
+              <span className="font-normal text-[#C90606] text-right">
+                - 3 000 UAH
+              </span>
             </div>
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-start">
               <span>К оплате:</span>

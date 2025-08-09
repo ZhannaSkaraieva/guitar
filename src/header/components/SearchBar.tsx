@@ -8,7 +8,7 @@ interface GuitarProps {
   guitar: Guitar;
 }
 
-const SearchBar: React.FC<GuitarProps> = ({ guitar }) => {
+const SearchBar = () => {
   const inputValue = useAppStore((state) => state.inputValue);
   const setInputValue = useAppStore((state) => state.setInputValue);
 

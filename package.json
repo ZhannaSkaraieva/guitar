@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tailwind:init": "tailwindcss init"
+    "tailwind:init": "tailwindcss init",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",

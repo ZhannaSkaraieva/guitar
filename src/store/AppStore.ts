@@ -21,6 +21,14 @@ interface AppStore {
   setInputSuggestions: (inputSuggestions: string[]) => void;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+
+  //кнопка вызова модального окна
+  isOpenModalId: number | null;
+  setIsOpenModalId: (id: number | null) => void;
+
+  //кнопка добавления товара в корзину
+  isOpenModalAdd: boolean;
+  setIsOpenModalAdd: (isOpenModalAdd: boolean) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -67,4 +75,10 @@ export const useAppStore = create<AppStore>((set) => ({
 
   isOpen: true,
   setIsOpen: (isOpen) => set(() => ({ isOpen })),
+
+  isOpenModalId: null,
+  setIsOpenModalId: (isOpenModalId) => set(() => ({ isOpenModalId })),
+
+  isOpenModalAdd: false,
+  setIsOpenModalAdd: (isOpenModalAdd) => set(() => ({ isOpenModalAdd })),
 }));

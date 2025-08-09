@@ -7,6 +7,7 @@ import HeaderIcon from "../assets/HeaderIcon";
 import SearchBar from "./components/SearchBar";
 import Basket from "../pages/basket/Basket";
 import BasketIcon from "../assets/BasketIcon";
+import { Guitar } from "../Data";
 
 export const Header = () => {
   return (
@@ -33,7 +34,7 @@ export const Header = () => {
         to="/basket"
         className="flex items-center justify-center w-10 lg:w-35 h-10 lg:h-35"
       >
-        <BasketIcon />
+        <BasketIcon />0
       </Link>
     </div>
   );

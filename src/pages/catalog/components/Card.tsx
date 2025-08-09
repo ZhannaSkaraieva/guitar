@@ -4,12 +4,18 @@ import Reviews from "./Reviews";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
 import CardBasketIcon from "../../../assets/CardBasketIcon";
+import { useAppStore } from "../../../store/AppStore";
+import ModalCard from "./ModalCard";
+import Guitars from "../../../Data";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
   guitar: Guitar;
 }
 const Card: React.FC<GuitarProps> = ({ guitar }) => {
+  const isOpenModalId = useAppStore((state) => state.isOpenModalId);
+  const setIsOpenModalId = useAppStore((state) => state.setIsOpenModalId);
+
   return (
     <>
       <div className=" bg-white border border-[#DDDADA] ">
@@ -48,13 +54,17 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
             </button>
           </Link>
 
+          {/* Кнопка Купить ВЫЗЫВАЕТ МОДАЛЬНОЕ ОКНО  */}
           <button
             type="button"
             className="flex-1 flex bg-[#C90606]  h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
+            onClick={() => setIsOpenModalId(guitar.id)}
           >
             <CardBasketIcon />
             Купить
           </button>
+
+          {isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}
         </div>
       </div>
     </>
