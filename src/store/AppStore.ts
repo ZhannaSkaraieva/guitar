@@ -24,7 +24,9 @@ interface AppStore {
 
   //кнопка вызова модального окна
   isOpenModalId: number | null;
+  isClosedModalId: boolean;
   setIsOpenModalId: (id: number | null) => void;
+  setIsClosedModalId: (isClosedModalId: boolean) => void;
 
   //кнопка добавления товара в корзину
   isOpenModalAdd: boolean;
@@ -78,6 +80,9 @@ export const useAppStore = create<AppStore>((set) => ({
 
   isOpenModalId: null,
   setIsOpenModalId: (isOpenModalId) => set(() => ({ isOpenModalId })),
+
+  isClosedModalId: false,
+  setIsClosedModalId: (isClosedModalId) => set(() => ({ isClosedModalId })),
 
   isOpenModalAdd: false,
   setIsOpenModalAdd: (isOpenModalAdd) => set(() => ({ isOpenModalAdd })),

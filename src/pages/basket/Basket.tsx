@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Guitars, { Guitar } from "../../Data";
 import CrossIcon from "../../assets/CrossIcon";
 import MinusIcon from "../../assets/MinusIcon";
 import PlusIcon from "../../assets/PlusIcon";
 import Line3 from "../../assets/Line3";
+import { CartContext } from "../../features/ContextProvider";
 
 interface BasketProps {
   guitars: Guitar[];
@@ -19,6 +20,7 @@ const Basket: React.FC<BasketProps> = ({ guitars }) => {
         </div>
 
         {/**Отображение товара в корзине */}
+
         {guitars.map((guitar, id) => (
           <div key={id}>
             <div className="flex flex-row">

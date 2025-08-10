@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useAppStore } from "../../../store/AppStore";
 import { Guitar } from "../../../Data";
 import ModalItemAdd from "./ModalItemAdd";
+import { CartContext } from "../../../features/ContextProvider";
+
+
 
 interface GuitarProps {
   guitar: Guitar;
@@ -9,8 +12,13 @@ interface GuitarProps {
 const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
   const setIsOpenModalId = useAppStore((state) => state.setIsOpenModalId);
 
+  const isClosedModalId = useAppStore((state) => state.isClosedModalId);
+  const setIsClosedModalId = useAppStore((state) => state.setIsClosedModalId);
+
   const setIsOpenModalAdd = useAppStore((state) => state.setIsOpenModalAdd);
   const isOpenModalAdd = useAppStore((state) => state.isOpenModalAdd);
+
+  const { dispatch } = useContext(CartContext);
 
   return (
     <>
@@ -54,14 +62,15 @@ const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
           <button
             className="flex-1 flex bg-[#C90606] w-[225px] h-[45px] my-8 rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
             onClick={() => {
-              setIsOpenModalId(null);
               setIsOpenModalAdd(true);
+              setIsClosedModalId(true);
+              dispatch({ type: "Add", payload: guitar });
             }}
           >
             Добавить в корзину
           </button>
 
-          {isOpenModalAdd && <ModalItemAdd />}
+          {isClosedModalId && isOpenModalAdd && <ModalItemAdd />}
         </div>
       </div>
     </>
