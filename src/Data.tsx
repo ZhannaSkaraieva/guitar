@@ -11,6 +11,7 @@ export interface Guitar {
   price: number;
   stocked: boolean;
   image: string;
+  quantity?: number; // Optional property for quantity in the cart
 }
 
 const Guitars: Guitar[] = [

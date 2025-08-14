@@ -1,32 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Guitar } from "../../../Data";
-import ModalItemAdd from "./ModalItemAdd";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
 
-interface GuitarProps {
+interface PopUp_deliteProps {
   guitar: Guitar;
 }
-const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
-  const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
-  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
 
-  const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
-  const isOpenModalId = useModalStore((state) => state.isOpenModalId);
+const PopUp_delite: React.FC<PopUp_deliteProps> = ({ guitar }) => {
+  const { cart, dispatch } = useContext(CartContext);
 
-  const { dispatch } = useContext(CartContext);
+  const isPopUpDeliteOpen = useModalStore((state) => state.isPopUpDeliteOpen);
+  const setIsPopUpDeliteOpen = useModalStore(
+    (state) => state.setIsPopUpDeliteOpen,
+  );
 
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
         <div className="flex flex-col w-[450px] h-auto inset-0 bg-white bg-opacity-50 items-center justify-center z-50">
           <div className="flex flex-row w-full my-10 items-center justify-around">
-            <h1 className="text-[#131212] font-[Open_Sans] not-italic font-bold text-center tracking-wider text-[18px] leading-[15px]">
-              Добавить товар в корзину
+            <h1 className="text-[#C90606] font-[Open_Sans] not-italic font-bold text-center tracking-wider text-[18px] leading-[15px]">
+              Удалить этот товар?
             </h1>
 
             <span
-              onClick={() => setIsOpenModalId(null)}
+              onClick={() => setIsPopUpDeliteOpen(null)}
               className="cursor-pointer text-2xl leading-non"
             >
               &times;
@@ -56,23 +56,30 @@ const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
               </div>
             </div>
           </div>
-          <button
-            className="flex-1 flex bg-[#C90606] w-[225px] h-[45px] my-8 rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
-            onClick={() => {
-              dispatch({ type: "Add", payload: guitar });
-
-              setIsOpenModalAdd(true);
-              setIsOpenModalId(null);
-            }}
-          >
-            Добавить в корзину
-          </button>
-
-          {isOpenModalId && isOpenModalAdd && <ModalItemAdd />}
+          <div className="flex items-center justify-around w-full mb-8">
+            <Link to={`/basket`}>
+              <button
+                className="w-[180px] h-[40px] my-1 border-2 bg-black border-black rounded-xs font-[Open_Sans] font-bold not-italic  text-sm text-white leading-none tracking-[5%] text-center"
+                onClick={() =>
+                  dispatch({ type: "Delete", payload: { id: guitar.id } })
+                }
+              >
+                Удалить товар
+              </button>
+            </Link>
+            <Link to={`/catalog`}>
+              <button
+                className="w-[180px] h-[40px] my-1 border-2 border-black font-[Open_Sans] rounded-xs font-normal not-italic text-xs leading-none tracking-[5%] text-center text-[#585757]"
+                onClick={() => setIsPopUpDeliteOpen(null)}
+              >
+                Продолжить покупки
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default ModalCard;
+export default PopUp_delite;

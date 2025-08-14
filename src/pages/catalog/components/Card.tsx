@@ -7,14 +7,15 @@ import CardBasketIcon from "../../../assets/CardBasketIcon";
 import { useAppStore } from "../../../store/AppStore";
 import ModalCard from "./ModalCard";
 import Guitars from "../../../Data";
+import { useModalStore } from "../../../store/ModalStore";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
   guitar: Guitar;
 }
 const Card: React.FC<GuitarProps> = ({ guitar }) => {
-  const isOpenModalId = useAppStore((state) => state.isOpenModalId);
-  const setIsOpenModalId = useAppStore((state) => state.setIsOpenModalId);
+  const isOpenModalId = useModalStore((state) => state.isOpenModalId);
+  const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
 
   return (
     <>

@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppStore } from "../../../store/AppStore";
 import VectorIconRed from "../../../assets/VectorIconRed";
 import { Link } from "react-router-dom";
+import { useModalStore } from "../../../store/ModalStore";
 
 const ModalItemAdd = () => {
-  const setIsOpenModalAdd = useAppStore((state) => state.setIsOpenModalAdd);
-  const isOpenModalAdd = useAppStore((state) => state.isOpenModalAdd);
+  const isOpenModalId = useModalStore((state) => state.isOpenModalId);
+  const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
+
+  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
+  const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
 
   return (
     <div className=" fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className=" relative flex flex-col w-[450px] h-auto inset-0 bg-white bg-opacity-50 items-center justify-end z-50">
         <div className="absolute top-0 left-0">
-          <img src="../../../public/image/Electro_4.png" alt="Electro Guitar" />
+          <img src="../../../../image/Electro_4.png" alt="Electro Guitar" />
         </div>
         <div className="w-full flex justify-end px-4 mt-2">
           <span
@@ -31,12 +35,18 @@ const ModalItemAdd = () => {
 
         <div className="flex items-center justify-around w-full mb-8">
           <Link to={`/basket`}>
-            <button className="w-[180px] h-[40px] my-1 border-2 bg-black border-black rounded-xs font-[Open_Sans] font-bold not-italic  text-sm text-white leading-none tracking-[5%] text-center">
+            <button
+              className="w-[180px] h-[40px] my-1 border-2 bg-black border-black rounded-xs font-[Open_Sans] font-bold not-italic  text-sm text-white leading-none tracking-[5%] text-center"
+              onClick={() => setIsOpenModalAdd(false)}
+            >
               Перейти в корзину
             </button>
           </Link>
           <Link to={`/catalog`}>
-            <button className="w-[180px] h-[40px] my-1 border-2 border-black font-[Open_Sans] rounded-xs font-normal not-italic text-xs leading-none tracking-[5%] text-center text-[#585757]">
+            <button
+              className="w-[180px] h-[40px] my-1 border-2 border-black font-[Open_Sans] rounded-xs font-normal not-italic text-xs leading-none tracking-[5%] text-center text-[#585757]"
+              onClick={() => setIsOpenModalAdd(false)}
+            >
               Продолжить покупки
             </button>
           </Link>

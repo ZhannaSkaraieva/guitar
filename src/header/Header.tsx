@@ -8,7 +8,6 @@ import SearchBar from "./components/SearchBar";
 import BasketIcon from "../assets/BasketIcon";
 import { CartContext } from "../features/ContextProvider";
 
-
 export const Header = () => {
   const { cart } = useContext(CartContext);
   return (
@@ -32,25 +31,24 @@ export const Header = () => {
       {/** КОРЗИНА */}
 
       <div className="rflex items-center">
+        <Link
+          to="/basket"
+          className=" relative flex items-center justify-center w-10 lg:w-35  "
+        >
+          <BasketIcon />
 
-      <Link
-        to="/basket"
-        className=" relative flex items-center justify-center w-10 lg:w-35  "
-      >
-        <BasketIcon /> 
-
-        {/** КОЛИЧЕСТВО ТОВАРОВ В КОРЗИНЕ */
-        cart.guitars.length > 0 && (
-          <span className="absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full">
-            {cart.guitars.length}
-          </span>
-        )}
+          {
+            /** КОЛИЧЕСТВО ТОВАРОВ В КОРЗИНЕ */
+            cart.guitars.length > 0 && (
+              <span className="absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full">
+                {cart.guitars.length}
+              </span>
+            )
+          }
         </Link>
-        </div>
+      </div>
     </div>
   );
 };
 
-export default Header
-
-
+export default Header;
