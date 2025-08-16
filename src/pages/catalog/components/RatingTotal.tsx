@@ -5,7 +5,7 @@ interface GuitarProps {
   guitar: Guitar;
 }
 
-const Rating: React.FC<GuitarProps> = ({ guitar }) => {
+const RatingTotal: React.FC<GuitarProps> = ({ guitar }) => {
   return (
     <>
       <div className="flex w-4 h-4 justify-center items-center mx-1">
@@ -17,4 +17,4 @@ const Rating: React.FC<GuitarProps> = ({ guitar }) => {
   );
 };
 
-export default Rating;
+export default RatingTotal;

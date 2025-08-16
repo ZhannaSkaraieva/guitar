@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { ProductPage } from "../pages/productpage/ProductPage";
 
 interface AppStore {
   minPrice: number;

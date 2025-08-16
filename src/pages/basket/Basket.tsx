@@ -3,13 +3,9 @@ import Guitars, { Guitar } from "../../Data";
 import Line3 from "../../assets/Line3";
 import { CartContext } from "../../features/ContextProvider";
 import BasketGuitar from "./components/BasketGuitar";
-import { totalPrice } from "../../features/CartReduser";
+import { totalProductPrice } from "../../features/CartReduser";
 
-interface BasketProps {
-  guitar: Guitar;
-}
-
-const Basket: React.FC<BasketProps> = ({ guitar }) => {
+const Basket = () => {
   const cart = useContext(CartContext);
 
   const arr = cart.cart.guitars.map((guitar: Guitar) => (
@@ -54,7 +50,7 @@ const Basket: React.FC<BasketProps> = ({ guitar }) => {
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[15%] text-start">
               <span>Всего:</span>
               <span className="font-[Droid_Sans] font-normal text-right">
-                {totalPrice(cart.cart.guitars)} UAH
+                {totalProductPrice(cart.cart.guitars)} UAH
               </span>
             </div>
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[15%] text-start">

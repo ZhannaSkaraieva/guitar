@@ -1,13 +1,14 @@
 import React from "react";
 import { Guitar } from "../../../Data";
 import Reviews from "./Reviews";
-import Rating from "./Rating";
+import Rating from "./RatingTotal";
 import { Link } from "react-router-dom";
 import CardBasketIcon from "../../../assets/CardBasketIcon";
 import { useAppStore } from "../../../store/AppStore";
 import ModalCard from "./ModalCard";
 import Guitars from "../../../Data";
 import { useModalStore } from "../../../store/ModalStore";
+import { ProductPage } from "../../productpage/ProductPage";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {

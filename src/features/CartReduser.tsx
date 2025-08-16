@@ -41,7 +41,7 @@ type Action =
   | IncreaseQuantityAction
   | DecreaseQuantityAction;
 
-export const totalPrice = (guitars: Guitar[]) => {
+export const totalProductPrice = (guitars: Guitar[]) => {
   return guitars.reduce(
     (total, guitar) => total + guitar.price * (guitar.quantity || 1),
     0,

@@ -15,7 +15,8 @@ import Pagenotfound from "../pages/Pagenotfound";
 import Blog from "../pages/Blog";
 
 interface RouterArrProps {
-  guitar: Guitar[];
+  guitars: Guitar[];
+  guitar: Guitar;
 }
 
 const routeArr = [
@@ -24,7 +25,7 @@ const routeArr = [
   { path: "catalog/:id", element: <ProductPage guitars={Guitars} /> },
   { path: "about", element: <About /> },
   { path: "wherebuy", element: <Wherebuy /> },
-  { path: "basket", element: <Basket guitars={Guitars} /> },
+  { path: "basket", element: <Basket /> },
   { path: "blog", element: <Blog /> },
   { path: "faq", element: <Faq /> },
   { path: "return", element: <Return /> },
