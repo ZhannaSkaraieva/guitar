@@ -3,7 +3,7 @@ interface Coupon {
   code: string;
   discount: number;
   isActive: boolean;
-  type: "fixed" | "percentage"; 
+  type: "fixed" | "percentage";
 }
 
 const Coupons: Coupon[] = [
@@ -12,17 +12,17 @@ const Coupons: Coupon[] = [
     code: "GITARAHIT",
     discount: 10,
     isActive: true,
-    type: "percentage", 
+    type: "percentage",
   },
   {
     id: "2",
     code: "SAVE20",
-    discount: 20,
+    discount: 2000,
     isActive: false,
-    type: "fixed", 
+    type: "fixed",
   },
 ];
 
 export default Coupons;
 //react portal!!!!!!!!!
- //created add // time 
+//created add // time

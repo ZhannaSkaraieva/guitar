@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import StarIcon from '../../../assets/StarIcon'
+import React, { useState } from "react";
+import StarIcon from "../../../assets/StarIcon";
 
 const RatingStar = () => {
   const [rating, setRating] = useState(null);
@@ -10,14 +10,14 @@ const RatingStar = () => {
         return (
           <>
             <label>
-          <input type='radio'/>
-            <StarIcon /></label>
+              <input type="radio" />
+              <StarIcon />
+            </label>
           </>
-            
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default RatingStar
+export default RatingStar;
