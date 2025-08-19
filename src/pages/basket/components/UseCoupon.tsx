@@ -42,6 +42,8 @@ const UseCoupon: React.FC = () => {
         
      
         const coupon = Coupons.find((coupon) => coupon.code.toUpperCase() === couponCode.toUpperCase());
+
+
         if (!coupon) {
             setAppliedCoupon("error");
             setDiscountValue(0);
@@ -55,11 +57,12 @@ const UseCoupon: React.FC = () => {
         }
 
         
-        // if (!coupon.isActive) {
-        //     setAppliedCoupon("промокод неактивен");
-        //     setDiscountValue(0);
-        //     return;
-        // }
+        if (!coupon.isActive) {
+            setAppliedCoupon("error");
+            setDiscountValue(0);
+            alert("Промокод не активен");
+            return;
+        }
     
 
     }
