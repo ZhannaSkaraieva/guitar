@@ -24,15 +24,17 @@ const Basket = () => {
 
 
   const discount = () => {
+    const total = totalProductPrice(cart.cart.guitars);
     if (discountType === 'percentage') {
-      setDiscountValue((totalProductPrice(cart.cart.guitars) * discountValue) / 100);
+      return (total * discountValue) / 100;
     } else if (discountType === 'fixed') {
-      setDiscountValue(totalProductPrice(cart.cart.guitars) - discountValue);
+      return (total - discountValue);
     }
+    return 0;
   }
 
   const totalDiscountPrice = () => {
-    return (totalProductPrice(cart.cart.guitars) - discountValue);
+    return (totalProductPrice(cart.cart.guitars) - discount());
   }
 
   
@@ -65,12 +67,12 @@ const Basket = () => {
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[15%] text-start">
               <span>Скидка:</span>
               <span className="font-normal text-[#C90606] text-right">
-                {discountValue} UAH
+                {discount()} UAH
               </span>
             </div>
             <div className="my-4 flex justify-between font-[Open_Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-start">
               <span>К оплате:</span>
-              <span className=" item-right">{totalDiscountPrice()}</span>
+              <span className=" item-right">{totalDiscountPrice()} UAH</span>
             </div>
             <button className="w-[220px] h-[50px] bg-[#C90606] rounded-xs text-center text-white my-4 font-[Open_Sans] font-bold not-italic text-lg leading-none tracking-[5%] ">
               Оформить заказ

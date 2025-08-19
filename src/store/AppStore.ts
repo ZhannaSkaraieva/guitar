@@ -2,13 +2,7 @@ import { create } from "zustand";
 import { ProductPage } from "../pages/productpage/ProductPage";
 
 interface AppStore {
-  setDiscountValue: any;
-  setdDiscountValue: any;
-  setAppliedCoupon: any;
-  discountValue: any;
-  appliedCoupon: any;
-  setCouponCode: any;
-  couponCode: any;
+  
   minPrice: number;
   setMinPrice: (minPrice: number) => void;
   maxPrice: number;
