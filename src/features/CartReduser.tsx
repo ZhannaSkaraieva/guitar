@@ -48,8 +48,6 @@ export const totalProductPrice = (guitars: Guitar[]) => {
   );
 };
 
-
-
 const CartReduser = (state: State, action: Action): State => {
   switch (action.type) {
     case "Add":

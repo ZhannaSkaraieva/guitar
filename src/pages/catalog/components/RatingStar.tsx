@@ -9,7 +9,7 @@ const RatingStar = () => {
         const currentRating = index + 1;
         return (
           <>
-            <label>
+            <label className="">
               <input type="radio" />
               <StarIcon />
             </label>

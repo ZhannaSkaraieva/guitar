@@ -1,7 +1,6 @@
 import React from "react";
 import { Guitar } from "../../../Data";
-import Reviews from "./Reviews";
-import Rating from "./RatingTotal";
+
 import { Link } from "react-router-dom";
 import CardBasketIcon from "../../../assets/CardBasketIcon";
 import { useAppStore } from "../../../store/AppStore";
@@ -29,8 +28,8 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
           />
         </a>
         <div className="flex justify-start p-2">
-          <Reviews />
-          <Rating guitar={guitar} />
+          {/* <Reviews />
+          <Rating guitar={guitar} /> */}
         </div>
 
         <div className=" flex flex-col p-2">

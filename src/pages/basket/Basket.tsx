@@ -9,37 +9,31 @@ import Coupons from "../../DataCoupon";
 import { useCartStore } from "../../store/CartStore";
 
 const Basket = () => {
-
-  const discountType = useCartStore((state) => state.discountType)
+  const discountType = useCartStore((state) => state.discountType);
   const setDiscountType = useCartStore((state) => state.setDiscountType);
 
   const discountValue = useCartStore((state) => state.discountValue);
   const setDiscountValue = useCartStore((state) => state.setDiscountValue);
-  
+
   const cart = useContext(CartContext);
 
   const arr = cart.cart.guitars.map((guitar: Guitar) => (
     <BasketGuitar key={guitar.id} guitar={guitar} />
   ));
 
-
   const discount = () => {
     const total = totalProductPrice(cart.cart.guitars);
-    if (discountType === 'percentage') {
+    if (discountType === "percentage") {
       return (total * discountValue) / 100;
-    } else if (discountType === 'fixed') {
-      return (total - discountValue);
+    } else if (discountType === "fixed") {
+      return total - discountValue;
     }
     return 0;
-  }
+  };
 
   const totalDiscountPrice = () => {
-    return (totalProductPrice(cart.cart.guitars) - discount());
-  }
-
-  
-  
-  
+    return totalProductPrice(cart.cart.guitars) - discount();
+  };
 
   return (
     <>
@@ -54,7 +48,7 @@ const Basket = () => {
 
         <div className="flex justify-between">
           {/**ПРОМОКОД НА СКИДКУ */}
-          <UseCoupon  />
+          <UseCoupon />
 
           {/**ИТОГОВАЯ ЦЕНА */}
           <div className="w-[220px]">
