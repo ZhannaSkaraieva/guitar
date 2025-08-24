@@ -6,6 +6,9 @@ import PopUpForm from "./PopUpForm";
 import { Guitar } from "../../../Data";
 import Review from "./ReviewItem";
 import ReviewItem from "./ReviewItem";
+import { createPortal } from "react-dom";
+import Modal from "../../../components/Modal";
+import PopUpFormAdd from "./PopUpFormAdd";
 
 interface RewiewsProps {
   guitar: Guitar;
@@ -21,21 +24,26 @@ interface ReviewType {
   comment: string;
   rating: number;
 }
-  const ReviewsList: React.FC <RewiewsProps>= ({guitar, scrollToTop}) => {
+const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
   // ОТКРЫТИЕ POP-UP для создания отзыва
   const openModal = useProductPageStore((state) => state.openPopUpForm);
   const setOpenModal = useProductPageStore((state) => state.setOpenPopUpForm);
+
+  //дополнительная модалка , открытие
+  const openPopUpFormAdd = useProductPageStore(
+    (state) => state.openPopUpFormAdd,
+  );
+  const setOpenPopUpFormAdd = useProductPageStore(
+    (state) => state.setOpenPopUpFormAdd,
+  );
   // вызов массива отзывов
   const reviews = useProductPageStore((state) => state.reviews);
-//видимость только 3 отзывов
+  //видимость только 3 отзывов
   const [visibleReviews, setVisibleReviews] = useState(3);
   //фильтрую отзывы только по id гитары
   const guitarReviews = reviews.filter(
     (review) => review.productId === guitar.id,
   );
-
-  
-
 
   return (
     <>
@@ -50,11 +58,12 @@ interface ReviewType {
         >
           Оставить отзыв
         </button>
-        {openModal && <PopUpForm guitar={guitar} />}{" "}
+        {/*{openModal && createPortal (<PopUpForm guitar={guitar} />, document.body)}**/}
         {/**вызов модульного окна */}
       </div>
+      {/*<div onClick={() => setOpenModal(false)}></div>**/}
 
-      <div >
+      <div>
         {/* СПИСОК ОТЗЫВОВ */}
         {guitarReviews.length > 0 ? ( //отображать отзывы по гитаре если они есть
           <>
@@ -63,17 +72,20 @@ interface ReviewType {
             ))}
             {/**НАВИГАЦИЯ */}
             {guitarReviews.length > visibleReviews && (
-            <div className="flex items-center justify-center ">
+              <div className="flex items-center justify-center ">
                 <button
                   className="w-[300px] h-45px] bg-[#131212] rounded-xs font-[Open_Sans] text-base font-bold text-[#FFFFFF] p-2.5"
-                onClick={()=>setVisibleReviews((prev)=>prev+3)}>
-                Показать еще отзывы
-              </button>
-            </div>)}
+                  onClick={() => setVisibleReviews((prev) => prev + 3)}
+                >
+                  Показать еще отзывы
+                </button>
+              </div>
+            )}
             <div className="flex items-center justify-end mt-4">
               <button
                 onClick={scrollToTop}
-                className="w-[190px] h-[40px] border-[#C90606] border-1 rounded-xs font-[Open_Sans] font-bold text-[#C90606] text-center items-center flex justify-center ">
+                className="w-[190px] h-[40px] border-[#C90606] border-1 rounded-xs font-[Open_Sans] font-bold text-[#C90606] text-center items-center flex justify-center "
+              >
                 <GroupIcon />
                 Наверх
               </button>
@@ -83,6 +95,16 @@ interface ReviewType {
           <p className="text-gray-500">Отзывов пока нет</p>
         )}
       </div>
+      {openModal && (
+        <Modal onClose={() => setOpenModal(false)}>
+          <PopUpForm guitar={guitar} />
+        </Modal>
+      )}
+      {openPopUpFormAdd && (
+        <Modal onClose={() => setOpenPopUpFormAdd(false)}>
+          <PopUpFormAdd />
+        </Modal>
+      )}
     </>
   );
 };

@@ -3,6 +3,8 @@ import { useProductPageStore } from "../../../store/ProductPageStore";
 import { Guitar } from "../../../Data";
 import StrIcon from "../../../assets/StrIcon";
 import PopUpFormAdd from "./PopUpFormAdd";
+import { createPortal } from 'react-dom';
+import Modal from "../../../components/Modal";
 
 interface PopUpFormProps {
   guitar: Guitar;
@@ -17,10 +19,9 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
   const setAddReviews = useProductPageStore((state) => state.setAddReviews);
   //дополнительная модалка , открытие
   const openPopUpFormAdd = useProductPageStore((state) => state.openPopUpFormAdd);
-  const setOpenPopUpFormAdd = useProductPageStore ((state) => state.setOpenPopUpFormAdd);
-
+  const setOpenPopUpFormAdd = useProductPageStore((state) => state.setOpenPopUpFormAdd);
+  //установка состояния окон ввода отзыва
   const [name, setName] = useState("");
-  const [time, setTime] = useState("");
   const [advantages, setAdvantages] = useState("");
   const [disadvantages, setDisadvantages] = useState("");
   const [comment, setComment] = useState("");
@@ -29,11 +30,10 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
   // обновление полей формы
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    //создание нового отзыва
     const newReview = {
       id: Date.now(), // уникальный id
       name,
-
       advantages,
       disadvantages,
       comment,
@@ -41,44 +41,36 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
       productId: guitar.id,
       createdAt: new Date().toLocaleString(),
     };
-
+    //запись отзыва в состояние и передача его в родительский компонент
     addReviews(newReview);
-
-    
-
     setName("");
     setAdvantages("");
     setDisadvantages("");
     setComment("");
     setRating(0);
-
+    //закрытие модалки
+    setOpenModal(false);
+// открытие второй модалки
     
-  setOpenModal(false);
-
+      setOpenPopUpFormAdd(true);
+   
   };
+  {/*if (!openModal) return null;**/ }
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-        <div className="flex flex-col w-[410px] h-[505px]  inset-0 bg-white bg-opacity-50 items-start  z-50">
-          <div className="flex w-full mt-6 items-center justify-between px-10">
-            <h1 className="text-[#131212] font-[Open_Sans] not-italic font-bold text-center tracking-wider text-[18px] leading-[15px]">
-              Оставить отзыв
-            </h1>
+      <div className="w-full">
+        <div className="flex w-full mt-6 items-center justify-between px-10">
+          <h1 className="text-[#131212] font-[Open_Sans] not-italic font-bold text-center tracking-wider text-[18px] leading-[15px]">
+            Оставить отзыв
+          </h1>
+        </div>
+        <h3 className="my-4 px-10 font-[Open Sans] font-semibold not-italic text-lg leading-[20px] tracking-[5%] text-left">
+          {guitar.title.toUpperCase()}
+        </h3>
 
-            {/**ЗАКРЫТИЕ ФОРМЫ */}
-            <span
-              onClick={() => setOpenModal(false)}
-              className="cursor-pointer text-2xl leading-non"
-            >
-              &times;
-            </span>
-          </div>
-          <h3 className="my-4 px-10 font-[Open Sans] font-semibold not-italic text-lg leading-[20px] tracking-[5%] text-right">
-            {guitar.title.toUpperCase()}
-          </h3>
-
-          {/** ФОРМА ДЛЯ ЗАПИСИ ОТЗЫВА */}
+        {/** ФОРМА ДЛЯ ЗАПИСИ ОТЗЫВА */}
+        <div>
           <form
             className="flex flex-col w-full h-full px-10"
             onSubmit={handleSubmit}
@@ -141,21 +133,27 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center py-10">
               {/**КНОПКА ОТПРАВКИ ОТЗЫВА */}
               <button
-                onClick={()=>setOpenPopUpFormAdd(true)}
                 type="submit"
-                className="w-[190px] h-[45px] bg-[#131212] rounded-xs font-[Open_Sans] text-base font-bold text-[#FFFFFF]"
+                className="w-[190px] h-[45px]  bg-[#131212] rounded-xs font-[Open_Sans] text-base font-bold text-[#FFFFFF]"
+                //{/*onClick={()=>setOpenPopUpFormAdd(true)}**/}
               >
                 Отправить отзыв
               </button>
-              {openPopUpFormAdd && <PopUpFormAdd/>}
             </div>
           </form>
-          
         </div>
       </div>
+
+      {/*{openPopUpFormAdd && (
+        <Modal onClose={() => setOpenPopUpFormAdd(false)}>
+          <PopUpFormAdd />
+        </Modal>
+      )}**/}
+
+     {/** {openPopUpFormAdd && <PopUpFormAdd />}*/} 
     </>
   );
 };

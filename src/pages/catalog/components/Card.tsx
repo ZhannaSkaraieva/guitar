@@ -8,6 +8,8 @@ import ModalCard from "./ModalCard";
 import Guitars from "../../../Data";
 import { useModalStore } from "../../../store/ModalStore";
 import { ProductPage } from "../../productpage/ProductPage";
+import Modal from "../../../components/Modal";
+import ModalItemAdd from "./ModalItemAdd";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
@@ -16,6 +18,9 @@ interface GuitarProps {
 const Card: React.FC<GuitarProps> = ({ guitar }) => {
   const isOpenModalId = useModalStore((state) => state.isOpenModalId);
   const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
+
+  const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
+  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
 
   return (
     <>
@@ -65,9 +70,19 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
             Купить
           </button>
 
-          {isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}
+          {/*{isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}**/}
         </div>
       </div>
+      {isOpenModalId === guitar.id && (
+        <Modal onClose={() => setIsOpenModalId(null)}>
+          <ModalCard guitar={guitar} />
+        </Modal>
+      )}
+      {isOpenModalAdd && (
+        <Modal onClose={() => setIsOpenModalAdd(false)}>
+          <ModalItemAdd />
+        </Modal>
+      )}
     </>
   );
 };

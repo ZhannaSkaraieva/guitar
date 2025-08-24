@@ -17,7 +17,7 @@ const Layout = () => {
           backgroundSize: "contain, contain",
         }}
       >
-        <main className=" py-36 md:py-72 lg:py-96 xl:py-[470px] px-4 md:px-6 lg:px-12 ">
+        <main className=" py-36 md:py-40 lg:py-66 xl:py-[510px] px-4 md:px-6 lg:px-12 ">
           <Breadcrumb />
           <Outlet />
         </main>

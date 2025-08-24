@@ -2,6 +2,7 @@ import React from "react";
 import { useModalStore } from "../../../store/ModalStore";
 import ModalCard from "../../catalog/components/ModalCard";
 import { Guitar } from "../../../Data";
+import Modal from "../../../components/Modal";
 
 interface ProductButtonProps {
   guitar: Guitar;
@@ -28,8 +29,13 @@ const ProductButton: React.FC<ProductButtonProps> = ({ guitar }) => {
         >
           Добавить в корзину
         </button>
-        {isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}
+      
       </div>
+      {isOpenModalId === guitar.id && (
+        <Modal onClose={() => setIsOpenModalId(null)}>
+          <ModalCard guitar={guitar} />
+        </Modal>
+      )}
     </>
   );
 };

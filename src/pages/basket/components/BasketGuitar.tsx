@@ -7,6 +7,7 @@ import Line3 from "../../../assets/Line3";
 import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
 import PopUp_delite from "./PopUp_delite";
+import Modal from "../../../components/Modal";
 
 interface BasketGuitarProps {
   guitar: Guitar;
@@ -45,9 +46,6 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
             <button onClick={() => setIsPopUpDeliteOpen(guitar.id)}>
               <CrossIcon />
             </button>
-            {isPopUpDeliteOpen === guitar.id && (
-              <PopUp_delite guitar={guitar} />
-            )}
           </div>
 
           {/**ОПИСАНИЕ ГИТАРЫ */}
@@ -119,6 +117,12 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
           <Line3 />
         </div>
       </div>
+
+      {isPopUpDeliteOpen === guitar.id && (
+        <Modal onClose={() => setIsPopUpDeliteOpen(null)}>
+          <PopUp_delite guitar={guitar} />
+        </Modal>
+      )}
     </div>
   );
 };
