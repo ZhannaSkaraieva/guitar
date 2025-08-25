@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import RatingStar from "../../catalog/components/RatingStar";
+import RatingStar from "./RatingStar";
 import GroupIcon from "../../../assets/GroupIcon";
 import { useProductPageStore } from "../../../store/ProductPageStore";
 import PopUpForm from "./PopUpForm";

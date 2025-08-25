@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import RatingStar from "../../catalog/components/RatingStar";
+import React, { useState } from "react";
+import RatingStar from "./RatingStar";
 import { useProductPageStore } from "../../../store/ProductPageStore";
 import { JSX } from "react/jsx-runtime";
 
@@ -18,17 +18,19 @@ interface ReviewType {
 }
 
 const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
-  
-
   return (
     <>
       <div className="flex w-full items-center justify-between">
         <p className="text-[#010101] font-[Open_Sans] text-sm font-semibold ">
           {newReview.name} {"    "}
-          <span className="text-gray-400 text-xs mb-2">{newReview.createdAt}</span>
+          <span className="text-gray-400 text-xs mb-2">
+            {newReview.createdAt}
+          </span>
         </p>
       </div>
-      <RatingStar />
+      <div>
+        <RatingStar />
+      </div>
       <p>
         <span className="text-[#010101] font-[Open_Sans] text-sm font-semibold">
           Достоинства:

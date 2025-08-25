@@ -5,6 +5,7 @@ import StrIcon from "../../../assets/StrIcon";
 import PopUpFormAdd from "./PopUpFormAdd";
 import { createPortal } from 'react-dom';
 import Modal from "../../../components/Modal";
+import RatingStar from "./RatingStar";
 
 interface PopUpFormProps {
   guitar: Guitar;
@@ -100,7 +101,7 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
                 </label>
 
                 {/* Здесь будет компонент для выбора рейтинга */}
-                <p>Звезды</p>
+                <RatingStar />
               </div>
             </div>
             <label className=" flex font-[Open_Sans] font-normal not-italic text-sm leading-none tracking-[5%] text-left mb-2 text-[#585757]">
@@ -153,7 +154,7 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
         </Modal>
       )}**/}
 
-     {/** {openPopUpFormAdd && <PopUpFormAdd />}*/} 
+      {/** {openPopUpFormAdd && <PopUpFormAdd />}*/}
     </>
   );
 };

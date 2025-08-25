@@ -10,7 +10,10 @@ const RatingStar = () => {
         return (
           <>
             <label className="">
-              <input type="radio" />
+              <input
+                type="radio"
+                value={currentRating}
+              onClick={()=>setRating(currentRating)}/>
               <StarIcon />
             </label>
           </>

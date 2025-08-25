@@ -31,11 +31,11 @@ const ProductButton: React.FC<ProductButtonProps> = ({ guitar }) => {
         </button>
       
       </div>
-      {isOpenModalId === guitar.id && (
+      {/*{isOpenModalId === guitar.id && (
         <Modal onClose={() => setIsOpenModalId(null)}>
           <ModalCard guitar={guitar} />
         </Modal>
-      )}
+      )}**/}
     </>
   );
 };

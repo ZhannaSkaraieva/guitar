@@ -18,10 +18,11 @@ const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
 
   const { dispatch } = useContext(CartContext);
 
-  const handleClick = () => {
+  const handleAddToCart = () => {
+    dispatch({ type: "Add", payload: guitar });
     setIsOpenModalId(null);
-    setIsOpenModalAdd(true);
-  }
+    setTimeout(() => setIsOpenModalAdd(true), 500);
+  };
 
   return (
     <>
@@ -58,9 +59,7 @@ const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
         <div className="flex w-full items-center justify-center">
           <button
             className=" flex bg-[#C90606] w-[225px] h-[45px] my-8 rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
-            onClick={() => {
-              dispatch({ type: "Add", payload: guitar }, { handleClick });
-            }}
+            onClick={() => { handleAddToCart }}
           >
             Добавить в корзину
           </button>
