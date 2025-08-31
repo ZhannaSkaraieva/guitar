@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import RatingStar from "./RatingStar";
+import RatingStar from "./StarList";
 import GroupIcon from "../../../assets/GroupIcon";
 import { useProductPageStore } from "../../../store/ProductPageStore";
 import PopUpForm from "./PopUpForm";
@@ -23,6 +23,7 @@ interface ReviewType {
   disadvantages: string;
   comment: string;
   rating: number;
+  
 }
 const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
   // ОТКРЫТИЕ POP-UP для создания отзыва

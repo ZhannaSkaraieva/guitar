@@ -10,17 +10,23 @@ import { useModalStore } from "../../../store/ModalStore";
 import { ProductPage } from "../../productpage/ProductPage";
 import Modal from "../../../components/Modal";
 import ModalItemAdd from "./ModalItemAdd";
+import StarList from "../../productpage/components/StarList";
+import StarRatingLabel from "../../productpage/components/StarRatingLabel";
+import StarRatingAverage from "../../productpage/components/StarRatingAverage";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
   guitar: Guitar;
+
 }
-const Card: React.FC<GuitarProps> = ({ guitar }) => {
-  const isOpenModalId = useModalStore((state) => state.isOpenModalId);
+const Card: React.FC<GuitarProps> = ({ guitar}) => {
+  {/*const isOpenModalId = useModalStore((state) => state.isOpenModalId);
   const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
 
   const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
-  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
+  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);**/}
+
+  const setModallel = useModalStore((state) => state.setModallel);
 
   return (
     <>
@@ -32,9 +38,8 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
             alt={guitar.title}
           />
         </a>
-        <div className="flex justify-start p-2">
-          {/* <Reviews />
-          <Rating guitar={guitar} /> */}
+        <div className="flex justify-start p-2 gap-2.5 items-center">
+          <StarRatingAverage guitar={guitar} />
         </div>
 
         <div className=" flex flex-col p-2">
@@ -64,8 +69,15 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
           <button
             type="button"
             className="flex-1 flex bg-[#C90606]  h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
-            onClick={() => setIsOpenModalId(guitar.id)}
+            onClick={() =>
+              setModallel(
+                <Modal onClose={() => setModallel(null)}>
+                  <ModalCard guitarId={guitar.id} />
+                </Modal>,
+              )
+            }
           >
+            {/*setIsOpenModalId(guitar.id)}**/}
             <CardBasketIcon />
             Купить
           </button>
@@ -73,7 +85,7 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
           {/*{isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}**/}
         </div>
       </div>
-      {isOpenModalId === guitar.id && (
+      {/*{isOpenModalId === guitar.id && (
         <Modal onClose={() => setIsOpenModalId(null)}>
           <ModalCard guitar={guitar} />
         </Modal>
@@ -82,7 +94,7 @@ const Card: React.FC<GuitarProps> = ({ guitar }) => {
         <Modal onClose={() => setIsOpenModalAdd(false)}>
           <ModalItemAdd />
         </Modal>
-      )}
+      )}**/}
     </>
   );
 };

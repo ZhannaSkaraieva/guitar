@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import RatingStar from "./RatingStar";
-import { useProductPageStore } from "../../../store/ProductPageStore";
-import { JSX } from "react/jsx-runtime";
-
+import RatingStar from "./StarList";
+import StarRatingLabel from "./StarRatingLabel";
+import StarList from "./StarList";
+import StarRatingAverage from "./StarRatingAverage";
+import Guitars from "../../../Data";
+import { Guitar } from '../../../Data';
 interface ReviewItemProps {
   newReview: ReviewType;
 }
@@ -15,9 +17,10 @@ interface ReviewType {
   disadvantages: string;
   comment: string;
   rating: number;
+  productId: number;
 }
 
-const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
+const ReviewItem: React.FC<ReviewItemProps> = ({ newReview}) => {
   return (
     <>
       <div className="flex w-full items-center justify-between">
@@ -28,8 +31,8 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
           </span>
         </p>
       </div>
-      <div>
-        <RatingStar />
+      <div className="flex flex-row my-2">
+        <StarList />
       </div>
       <p>
         <span className="text-[#010101] font-[Open_Sans] text-sm font-semibold">

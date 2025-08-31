@@ -8,6 +8,7 @@ import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
 import PopUp_delite from "./PopUp_delite";
 import Modal from "../../../components/Modal";
+import StarRatingAverage from "../../productpage/components/StarRatingAverage";
 
 interface BasketGuitarProps {
   guitar: Guitar;
@@ -43,7 +44,10 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
         <div className="flex flex-row">
           {/**УДАЛЕНИЕ */}
           <div className=" flex justify-end items-start">
-            <button onClick={() => setIsPopUpDeliteOpen(guitar.id)}>
+            <button
+              title="Cross"
+              onClick={() => setIsPopUpDeliteOpen(guitar.id)}
+            >
               <CrossIcon />
             </button>
           </div>
@@ -56,6 +60,7 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
             <h3 className="my-4 font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
               {guitar.title.toUpperCase()}
             </h3>
+            <StarRatingAverage />
             <p className="my-1 font-[Open Sans] font-normal not-italic text-xl leading-none tracking-[5%] text-right">
               Артикул: {guitar.article}
             </p>
@@ -80,6 +85,7 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
           <div className="basis-1/6 flex flex-row  items-center justify-center ">
             <div>
               <button
+                title="Decrease"
                 className=" flex w-7 h-7 border-y border-l border-black items-center justify-center "
                 onClick={() => Decrease(guitar.id)}
               >
@@ -88,6 +94,7 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
             </div>
             <div>
               <input
+                title="quantity"
                 type="number"
                 value={guitar.quantity}
                 className=" flex w-7 h-7 border border-black items-center justify-center outline-none text-center"
@@ -95,6 +102,7 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
             </div>
             <div>
               <button
+                title="Increase"
                 className=" flex w-7 h-7 border-y border-r border-black items-center justify-center "
                 onClick={() => Increase(guitar.id)}
               >

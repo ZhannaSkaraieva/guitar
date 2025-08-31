@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Guitar } from "../../../Data";
+import Guitars, { Guitar } from "../../../Data";
 import ModalItemAdd from "./ModalItemAdd";
 import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
@@ -7,21 +7,44 @@ import { createPortal } from "react-dom";
 import Modal from "../../../components/Modal";
 
 interface GuitarProps {
-  guitar: Guitar;
+  
+  guitarId: number;
 }
-const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
-  const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
-  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
+const ModalCard: React.FC<GuitarProps> = ({ guitarId}) => {
+  // const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
+  // const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
 
-  const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
-  const isOpenModalId = useModalStore((state) => state.isOpenModalId);
+  // const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
+  // const isOpenModalId = useModalStore((state) => state.isOpenModalId);
 
-  const { dispatch } = useContext(CartContext);
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("CartContext не найден");
+  }
+  const { dispatch } = context;
+  
+
+
+  const setModallel = useModalStore((state) => state.setModallel);
+
+  const guitar = Guitars.find((guitar) => guitar.id === guitarId);
+  if (!guitar) {
+    return <div>Товар не найден</div>;
+  }
 
   const handleAddToCart = () => {
     dispatch({ type: "Add", payload: guitar });
-    setIsOpenModalId(null);
-    setTimeout(() => setIsOpenModalAdd(true), 500);
+    // Закрываем текущую модалку
+    setModallel(null);
+
+    // Открываем подтверждение добавления в корзину
+    setTimeout(() => {
+      setModallel(
+        <Modal onClose={() => setModallel(null)}>
+          <ModalItemAdd />
+        </Modal>,
+      );
+    }, 300);
   };
 
   return (
@@ -59,7 +82,7 @@ const ModalCard: React.FC<GuitarProps> = ({ guitar }) => {
         <div className="flex w-full items-center justify-center">
           <button
             className=" flex bg-[#C90606] w-[225px] h-[45px] my-8 rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
-            onClick={() => { handleAddToCart }}
+            onClick={() => handleAddToCart()}
           >
             Добавить в корзину
           </button>

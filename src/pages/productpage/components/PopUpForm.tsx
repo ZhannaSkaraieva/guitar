@@ -3,9 +3,11 @@ import { useProductPageStore } from "../../../store/ProductPageStore";
 import { Guitar } from "../../../Data";
 import StrIcon from "../../../assets/StrIcon";
 import PopUpFormAdd from "./PopUpFormAdd";
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom";
 import Modal from "../../../components/Modal";
-import RatingStar from "./RatingStar";
+import RatingStar from "./StarList";
+import StarList from "./StarList";
+import StarRatingLabel from "./StarRatingLabel";
 
 interface PopUpFormProps {
   guitar: Guitar;
@@ -19,8 +21,12 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
   const addReviews = useProductPageStore((state) => state.addReviews);
   const setAddReviews = useProductPageStore((state) => state.setAddReviews);
   //дополнительная модалка , открытие
-  const openPopUpFormAdd = useProductPageStore((state) => state.openPopUpFormAdd);
-  const setOpenPopUpFormAdd = useProductPageStore((state) => state.setOpenPopUpFormAdd);
+  const openPopUpFormAdd = useProductPageStore(
+    (state) => state.openPopUpFormAdd,
+  );
+  const setOpenPopUpFormAdd = useProductPageStore(
+    (state) => state.setOpenPopUpFormAdd,
+  );
   //установка состояния окон ввода отзыва
   const [name, setName] = useState("");
   const [advantages, setAdvantages] = useState("");
@@ -51,12 +57,13 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
     setRating(0);
     //закрытие модалки
     setOpenModal(false);
-// открытие второй модалки
-    
-      setOpenPopUpFormAdd(true);
-   
+    // открытие второй модалки
+
+    setOpenPopUpFormAdd(true);
   };
-  {/*if (!openModal) return null;**/ }
+  {
+    /*if (!openModal) return null;**/
+  }
 
   return (
     <>
@@ -99,9 +106,9 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
                     <StrIcon />
                   </span>
                 </label>
-
                 {/* Здесь будет компонент для выбора рейтинга */}
-                <RatingStar />
+                <StarList />
+                <StarRatingLabel/>
               </div>
             </div>
             <label className=" flex font-[Open_Sans] font-normal not-italic text-sm leading-none tracking-[5%] text-left mb-2 text-[#585757]">
