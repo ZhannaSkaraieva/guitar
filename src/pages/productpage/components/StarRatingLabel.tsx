@@ -1,12 +1,11 @@
 import React from "react";
-import { useStarStore } from "../../../store/StarStore";
 
-const StarRatingLabel = () => {
-  const currentRating = useStarStore((state) => state.currentRating);
-  const setCurrentRating = useStarStore((state) => state.setCurrentRating);
+interface StarRatingLabelProps {
+  rating: number;
+}
 
-  const labelText = `${currentRating}`;
-  return <div>{labelText}</div>;
+const StarRatingLabel: React.FC<StarRatingLabelProps> = ({ rating }) => {
+  return <div>{rating}</div>;
 };
 
 export default StarRatingLabel;

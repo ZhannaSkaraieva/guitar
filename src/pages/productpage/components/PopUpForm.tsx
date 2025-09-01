@@ -8,6 +8,8 @@ import Modal from "../../../components/Modal";
 import RatingStar from "./StarList";
 import StarList from "./StarList";
 import StarRatingLabel from "./StarRatingLabel";
+import StarListSubmit from "./StarListInput";
+import StarListInput from "./StarListInput";
 
 interface PopUpFormProps {
   guitar: Guitar;
@@ -107,8 +109,8 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
                   </span>
                 </label>
                 {/* Здесь будет компонент для выбора рейтинга */}
-                <StarList />
-                <StarRatingLabel/>
+                <StarListInput rating={rating} onChange={setRating} />
+                <StarRatingLabel rating={rating} />
               </div>
             </div>
             <label className=" flex font-[Open_Sans] font-normal not-italic text-sm leading-none tracking-[5%] text-left mb-2 text-[#585757]">

@@ -4,7 +4,8 @@ import StarRatingLabel from "./StarRatingLabel";
 import StarList from "./StarList";
 import StarRatingAverage from "./StarRatingAverage";
 import Guitars from "../../../Data";
-import { Guitar } from '../../../Data';
+import { Guitar } from "../../../Data";
+import StarListSubmit from "./StarListInput";
 interface ReviewItemProps {
   newReview: ReviewType;
 }
@@ -20,7 +21,8 @@ interface ReviewType {
   productId: number;
 }
 
-const ReviewItem: React.FC<ReviewItemProps> = ({ newReview}) => {
+const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
+  //debugger;
   return (
     <>
       <div className="flex w-full items-center justify-between">
@@ -32,7 +34,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ newReview}) => {
         </p>
       </div>
       <div className="flex flex-row my-2">
-        <StarList />
+        <StarList currentRating={newReview.rating} />
       </div>
       <p>
         <span className="text-[#010101] font-[Open_Sans] text-sm font-semibold">
