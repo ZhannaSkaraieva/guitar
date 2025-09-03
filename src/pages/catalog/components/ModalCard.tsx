@@ -3,28 +3,16 @@ import Guitars, { Guitar } from "../../../Data";
 import ModalItemAdd from "./ModalItemAdd";
 import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
-import { createPortal } from "react-dom";
-import Modal from "../../../components/Modal";
-
 interface GuitarProps {
-  
   guitarId: number;
 }
 const ModalCard: React.FC<GuitarProps> = ({ guitarId}) => {
-  // const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
-  // const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
-
-  // const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
-  // const isOpenModalId = useModalStore((state) => state.isOpenModalId);
-
   const context = useContext(CartContext);
   if (!context) {
     throw new Error("CartContext не найден");
   }
   const { dispatch } = context;
   
-
-
   const setModallel = useModalStore((state) => state.setModallel);
 
   const guitar = Guitars.find((guitar) => guitar.id === guitarId);
@@ -34,17 +22,9 @@ const ModalCard: React.FC<GuitarProps> = ({ guitarId}) => {
 
   const handleAddToCart = () => {
     dispatch({ type: "Add", payload: guitar });
-    // Закрываем текущую модалку
-    setModallel(null);
-
     // Открываем подтверждение добавления в корзину
-    setTimeout(() => {
       setModallel(
-        <Modal onClose={() => setModallel(null)}>
-          <ModalItemAdd />
-        </Modal>,
-      );
-    }, 300);
+          <ModalItemAdd />)
   };
 
   return (
@@ -88,11 +68,6 @@ const ModalCard: React.FC<GuitarProps> = ({ guitarId}) => {
           </button>
         </div>
       </div>
-      {/*{isOpenModalAdd && (
-        <Modal onClose={() => setIsOpenModalAdd(false)}>
-          <ModalItemAdd />
-        </Modal>
-      )}**/}
     </>
   );
 };

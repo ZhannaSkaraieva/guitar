@@ -1,18 +1,11 @@
 import React from "react";
 import VectorIconRed from "../../../assets/VectorIconRed";
 import { Link } from "react-router-dom";
-import { useProductPageStore } from "../../../store/ProductPageStore";
+import { useModalStore } from "../../../store/ModalStore";
 
 const PopUpFormAdd = () => {
-  const setOpenModal = useProductPageStore((state) => state.setOpenPopUpForm);
 
-  //дополнительная модалка , открытие
-  const openPopUpFormAdd = useProductPageStore(
-    (state) => state.openPopUpFormAdd,
-  );
-  const setOpenPopUpFormAdd = useProductPageStore(
-    (state) => state.setOpenPopUpFormAdd,
-  );
+  const setModallel = useModalStore((state) => state.setModallel);
 
   return (
     <>
@@ -31,9 +24,7 @@ const PopUpFormAdd = () => {
         <Link to={`/catalog`}>
           <button
             className="w-[140px] h-[45px] bg-[#131212] my-1 border-2 border-black font-[Open_Sans] rounded-xs font-bold not-italic text-sm leading-none tracking-[5%] text-center text-[#FEFAFA]"
-            onClick={() => {
-              setOpenPopUpFormAdd(false);
-            }}
+            onClick={() => setModallel(null)}
           >
             К покупкам !
           </button>

@@ -30,7 +30,7 @@ const Modal= () => {
             &times;
           </span>
         </div>
-        {modal}
+        {modal} 
       </div>
     </div>,
     document.body,

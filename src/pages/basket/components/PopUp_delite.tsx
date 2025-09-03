@@ -11,10 +11,7 @@ interface PopUp_deliteProps {
 const PopUp_delite: React.FC<PopUp_deliteProps> = ({ guitar }) => {
   const { cart, dispatch } = useContext(CartContext);
 
-  const isPopUpDeliteOpen = useModalStore((state) => state.isPopUpDeliteOpen);
-  const setIsPopUpDeliteOpen = useModalStore(
-    (state) => state.setIsPopUpDeliteOpen,
-  );
+const setModallel = useModalStore((state) => state.setModallel);
 
   return (
     <>
@@ -61,7 +58,7 @@ const PopUp_delite: React.FC<PopUp_deliteProps> = ({ guitar }) => {
         <Link to={`/catalog`}>
           <button
             className="w-[180px] h-[40px] my-1 border-2 border-black font-[Open_Sans] rounded-xs font-normal not-italic text-xs leading-none tracking-[5%] text-center text-[#585757]"
-            onClick={() => setIsPopUpDeliteOpen(null)}
+            onClick={() => setModallel(null)}
           >
             Продолжить покупки
           </button>

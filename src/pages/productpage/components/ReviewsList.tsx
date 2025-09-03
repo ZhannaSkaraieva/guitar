@@ -6,9 +6,7 @@ import PopUpForm from "./PopUpForm";
 import { Guitar } from "../../../Data";
 import Review from "./ReviewItem";
 import ReviewItem from "./ReviewItem";
-import { createPortal } from "react-dom";
-import Modal from "../../../components/Modal";
-import PopUpFormAdd from "./PopUpFormAdd";
+import { useModalStore } from "../../../store/ModalStore";
 
 interface RewiewsProps {
   guitar: Guitar;
@@ -26,17 +24,10 @@ interface ReviewType {
   
 }
 const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
-  // ОТКРЫТИЕ POP-UP для создания отзыва
-  const openModal = useProductPageStore((state) => state.openPopUpForm);
-  const setOpenModal = useProductPageStore((state) => state.setOpenPopUpForm);
 
-  //дополнительная модалка , открытие
-  const openPopUpFormAdd = useProductPageStore(
-    (state) => state.openPopUpFormAdd,
-  );
-  const setOpenPopUpFormAdd = useProductPageStore(
-    (state) => state.setOpenPopUpFormAdd,
-  );
+  const modal = useModalStore((state) => state.modal);
+  const setModallel = useModalStore((state) => state.setModallel);
+
   // вызов массива отзывов
   const reviews = useProductPageStore((state) => state.reviews);
   //видимость только 3 отзывов
@@ -52,17 +43,16 @@ const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
         <h2 className=" font-[Open_Sans] text-2xl font-bold text-[#010101] mb-4">
           Отзывы
         </h2>
+
         {/**КНОПКА ОТКРЫТИЯ ФОРМЫ ДЛЯ ОТЗЫВА */}
         <button
           className="w-[190px] h-[40px] border-[#C90606] border-1 rounded-xs font-[Open_Sans] text-base font-bold text-[#C90606]"
-          onClick={() => setOpenModal(true)}
-        >
+          onClick={() =>
+            setModallel(
+              <PopUpForm guitar={guitar} />)}>
           Оставить отзыв
         </button>
-        {/*{openModal && createPortal (<PopUpForm guitar={guitar} />, document.body)}**/}
-        {/**вызов модульного окна */}
       </div>
-      {/*<div onClick={() => setOpenModal(false)}></div>**/}
 
       <div>
         {/* СПИСОК ОТЗЫВОВ */}
@@ -96,16 +86,6 @@ const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
           <p className="text-gray-500">Отзывов пока нет</p>
         )}
       </div>
-      {openModal && (
-        <Modal onClose={() => setOpenModal(false)}>
-          <PopUpForm guitar={guitar} />
-        </Modal>
-      )}
-      {openPopUpFormAdd && (
-        <Modal onClose={() => setOpenPopUpFormAdd(false)}>
-          <PopUpFormAdd />
-        </Modal>
-      )}
     </>
   );
 };

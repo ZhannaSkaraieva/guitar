@@ -7,7 +7,6 @@ import Line3 from "../../../assets/Line3";
 import { CartContext } from "../../../features/ContextProvider";
 import { useModalStore } from "../../../store/ModalStore";
 import PopUp_delite from "./PopUp_delite";
-import Modal from "../../../components/Modal";
 import StarRatingAverage from "../../productpage/components/StarRatingAverage";
 
 interface BasketGuitarProps {
@@ -17,26 +16,27 @@ interface BasketGuitarProps {
 const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
   const { cart, dispatch } = useContext(CartContext);
 
+  {
+    /**СЧЕТЧИК + */
+  }
   const Increase = (id: number) => {
     const cartProductIn = cart.guitars.find(
       (guitar: { id: number }) => guitar.id === id,
     );
-
     dispatch({ type: "Increase", payload: { id }, quantity: 1 });
   };
 
+  {
+    /**СЧЕТЧИК - */
+  }
   const Decrease = (id: number) => {
     const cartProductDe = cart.guitars.find(
       (guitar: { id: number }) => guitar.id === id,
     );
-
     dispatch({ type: "Decrease", payload: { id }, quantity: 1 });
   };
 
-  const isPopUpDeliteOpen = useModalStore((state) => state.isPopUpDeliteOpen);
-  const setIsPopUpDeliteOpen = useModalStore(
-    (state) => state.setIsPopUpDeliteOpen,
-  );
+  const setModallel = useModalStore((state) => state.setModallel);
 
   return (
     <div>
@@ -46,7 +46,9 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
           <div className=" flex justify-end items-start">
             <button
               title="Cross"
-              onClick={() => setIsPopUpDeliteOpen(guitar.id)}
+              onClick={() =>
+                setModallel(
+                  <PopUp_delite guitar={guitar} />)}
             >
               <CrossIcon />
             </button>
@@ -125,12 +127,6 @@ const BasketGuitar: React.FC<BasketGuitarProps> = ({ guitar }) => {
           <Line3 />
         </div>
       </div>
-
-      {isPopUpDeliteOpen === guitar.id && (
-        <Modal onClose={() => setIsPopUpDeliteOpen(null)}>
-          <PopUp_delite guitar={guitar} />
-        </Modal>
-      )}
     </div>
   );
 };

@@ -1,30 +1,17 @@
 import React from "react";
 import { Guitar } from "../../../Data";
-
 import { Link } from "react-router-dom";
 import CardBasketIcon from "../../../assets/CardBasketIcon";
-import { useAppStore } from "../../../store/AppStore";
 import ModalCard from "./ModalCard";
-import Guitars from "../../../Data";
 import { useModalStore } from "../../../store/ModalStore";
-import { ProductPage } from "../../productpage/ProductPage";
-import Modal from "../../../components/Modal";
-import ModalItemAdd from "./ModalItemAdd";
-import StarList from "../../productpage/components/StarList";
-import StarRatingLabel from "../../productpage/components/StarRatingLabel";
 import StarRatingAverage from "../../productpage/components/StarRatingAverage";
 
 // Компонент Cards для отображения карточек товаров в каталоге
 interface GuitarProps {
   guitar: Guitar;
-
 }
-const Card: React.FC<GuitarProps> = ({ guitar}) => {
-  {/*const isOpenModalId = useModalStore((state) => state.isOpenModalId);
-  const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
 
-  const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
-  const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);**/}
+const Card: React.FC<GuitarProps> = ({ guitar}) => {
 
   const setModallel = useModalStore((state) => state.setModallel);
 
@@ -39,11 +26,11 @@ const Card: React.FC<GuitarProps> = ({ guitar}) => {
           />
         </a>
         <div className="flex justify-start p-2 gap-2.5 items-center">
-          <StarRatingAverage guitar={guitar} />
+          {/*<StarRatingAverage guitar={guitar} />**/}
         </div>
 
+        {/* Заголовок и цена */}
         <div className=" flex flex-col p-2">
-          {/* Заголовок и цена */}
           <div className="flex flex-row justify-between items-start">
             <h5 className="font-[Open_Sans] font-normal not-italic text-sm/tight leading-none tracking-wider">
               {guitar.title}
@@ -69,32 +56,13 @@ const Card: React.FC<GuitarProps> = ({ guitar}) => {
           <button
             type="button"
             className="flex-1 flex bg-[#C90606]  h-min rounded-[2px] px-2.5 py-1.5 text-xs font-medium uppercase leading-normal text-white  items-center justify-center gap-1 whitespace-nowrap"
-            onClick={() =>
-              setModallel(
-                <Modal onClose={() => setModallel(null)}>
-                  <ModalCard guitarId={guitar.id} />
-                </Modal>,
-              )
-            }
+            onClick={() => setModallel(<ModalCard guitarId={guitar.id} />)}
           >
-            {/*setIsOpenModalId(guitar.id)}**/}
             <CardBasketIcon />
             Купить
           </button>
-
-          {/*{isOpenModalId === guitar.id && <ModalCard guitar={guitar} />}**/}
         </div>
       </div>
-      {/*{isOpenModalId === guitar.id && (
-        <Modal onClose={() => setIsOpenModalId(null)}>
-          <ModalCard guitar={guitar} />
-        </Modal>
-      )}
-      {isOpenModalAdd && (
-        <Modal onClose={() => setIsOpenModalAdd(false)}>
-          <ModalItemAdd />
-        </Modal>
-      )}**/}
     </>
   );
 };

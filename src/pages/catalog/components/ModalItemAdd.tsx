@@ -5,11 +5,6 @@ import { Link } from "react-router-dom";
 import { useModalStore } from "../../../store/ModalStore";
 
 const ModalItemAdd = () => {
-  // const isOpenModalId = useModalStore((state) => state.isOpenModalId);
-  // const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
-
-  // const setIsOpenModalAdd = useModalStore((state) => state.setIsOpenModalAdd);
-  // const isOpenModalAdd = useModalStore((state) => state.isOpenModalAdd);
 
     const setModallel = useModalStore((state) => state.setModallel);
 
@@ -18,15 +13,6 @@ const ModalItemAdd = () => {
       <div className=" mt-[-34px]">
         <img src="../../../../image/Electro_4.png" alt="Electro Guitar" />
       </div>
-      {/* <div className="w-full flex justify-end px-4 mt-2">
-        <span
-          onClick={() => setModallel(null)}
-          className="cursor-pointer text-2xl leading-non"
-        >
-          &times;
-        </span>
-      </div> */}
-
       <div className="flex my-8 px-12 flex-row w-full  items-start justify-between">
         <span className="mt-2">
           <VectorIconRed />
@@ -35,7 +21,6 @@ const ModalItemAdd = () => {
           Товар успешно добавлен в корзину
         </h1>
       </div>
-
       <div className="flex items-center justify-around w-full mb-8">
         <Link to={`/basket`}>
           <button
