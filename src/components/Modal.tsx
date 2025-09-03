@@ -1,14 +1,15 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import { useProductPageStore } from "../store/ProductPageStore";
 import { useModalStore } from "../store/ModalStore";
 
-interface ModalProps {
-  children: React.ReactNode;
-  onClose: () => void;
-}
+const Modal= () => {
+  const modal = useModalStore((state) => state.modal);
+  const setModallel = useModalStore((state) => state.setModallel);
 
-const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
+  if (!modal) return null; // если модалки нет → ничего не рендерим
+
+  const onClose = () => setModallel(null);
+
   return createPortal(
     <div
       className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-black/50 pt-10"
@@ -29,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
             &times;
           </span>
         </div>
-        {children}
+        {modal}
       </div>
     </div>,
     document.body,

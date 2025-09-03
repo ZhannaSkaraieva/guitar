@@ -9,10 +9,11 @@ interface ProductButtonProps {
 }
 
 const ProductButton: React.FC<ProductButtonProps> = ({ guitar }) => {
-  // const isOpenModalId = useModalStore((state) => state.isOpenModalId);
-  // const setIsOpenModalId = useModalStore((state) => state.setIsOpenModalId);
 
   const setModallel = useModalStore((state) => state.setModallel);
+
+  
+
   return (
     <>
       <div className="flex flex-col w-[246px] h-[165px] mt-4 border-2 border-[#585757B2] rounded-xs items-center justify-center self-start">
@@ -27,20 +28,17 @@ const ProductButton: React.FC<ProductButtonProps> = ({ guitar }) => {
         </p>
         <button
           className="flex bg-[#C90606] w-[225px] h-[45px]  rounded-[2px]  text-xs font-medium uppercase leading-normal text-white  items-center justify-center whitespace-nowrap"
-          onClick={()=>setModallel(
-                <Modal onClose={() => setModallel(null)}>
-                  <ModalCard guitarId={guitar.id} />
-                </Modal>)}
-               >
+          onClick={() =>
+            setModallel(
+              <ModalCard
+                guitarId={guitar.id}
+              />,
+            )
+          }
+        >
           Добавить в корзину
         </button>
-      
       </div>
-      {/*{isOpenModalId === guitar.id && (
-        <Modal onClose={() => setIsOpenModalId(null)}>
-          <ModalCard guitar={guitar} />
-        </Modal>
-      )}**/}
     </>
   );
 };
