@@ -6,6 +6,7 @@ interface StarStore {
     setMaxValue: (currentRating: number) => void;
     ratingAverage: [];
     setRatingAverage: (ratingAverage: []) => void;
+    
 }
 
 export const useStarStore = create<StarStore>((set) => ({

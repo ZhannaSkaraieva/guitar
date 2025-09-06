@@ -10,10 +10,13 @@ interface AppStore {
   setSortByTypes: (type: string) => void;
   sortByStrings: number[];
   setSortByStrings: (sortByStrings: number) => void;
-  sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating" | "default";
-  setSortBy: (
-    sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating",
-  ) => void;
+
+  //сортировка товара по цене и популярности
+  sortBy: "price" | "rating"| null;
+  sortOrder: "asc" | "desc";
+  setSortBy: (sortBy: "price" | "rating") => void;
+  setSortOrder: (order: "asc" | "desc") => void;
+
   curentPage: number;
   setCurrentPage: (currentPage: number) => void;
   inputValue: string;
@@ -53,9 +56,11 @@ export const useAppStore = create<AppStore>((set) => ({
       };
     }),
 
-  sortBy: "default",
-  setSortBy: (sortBy: "ArrowUp" | "ArrowDown" | "SortPrice" | "SortRating") =>
-    set(() => ({ sortBy })),
+  //сортировка товара по цене и популярности
+  sortBy: null,
+  sortOrder: "asc",
+  setSortBy: (sortBy) => set({ sortBy }),
+  setSortOrder: (order) => set({ sortOrder: order }),
 
   curentPage: 1,
   setCurrentPage: (curentPage) => set(() => ({ curentPage })),

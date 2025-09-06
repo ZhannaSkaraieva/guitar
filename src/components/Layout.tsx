@@ -9,7 +9,7 @@ const Layout = () => {
     <>
       <Header />
       <div
-        className="h-min bg-no-repeat bg-local w-full bg-custom-hero" // bg-custom-hero в index.css
+        className="h-min bg-no-repeat bg-local w-full bg-custom-guitar" // bg-custom-hero в index.css
         // style={{
         //   backgroundImage:
         //     "url('/assets/Image-Back.png'), url('/assets/Footerimg.png')",
@@ -17,7 +17,7 @@ const Layout = () => {
         //   backgroundSize: "contain, contain",
         // }}
       >
-        <main className=" py-36 md:py-40 lg:py-66 xl:py-[510px] px-4 md:px-6 lg:px-12 ">
+        <main className=" py-36 md:py-40 lg:pt-66 lg:pb-45 xl:pt-[410px] xl:pb-[250px] 2xl:pt-[550px] 2xl:pb-[460px] px-4 md:px-6 lg:px-12 ">
           <Breadcrumb />
           <Outlet />
         </main>

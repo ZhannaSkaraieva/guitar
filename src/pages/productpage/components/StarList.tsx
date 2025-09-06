@@ -4,8 +4,9 @@ import { useStarStore } from "../../../store/StarStore";
 
 interface StarListProps {
   currentRating?: number; // Если передаётся — отобразим этот рейтинг
+  onChange?: (value: number) => void;
 }
-const StarList: React.FC<StarListProps> = ({ currentRating = 0 }) => {
+const StarList: React.FC<StarListProps> = ({ currentRating = 0, onChange,}) => {
   const maxValue = useStarStore((state) => state.maxValue);
   return (
     <>
@@ -14,6 +15,7 @@ const StarList: React.FC<StarListProps> = ({ currentRating = 0 }) => {
           const starsInOrder = index + 1;
           return (
             <Star
+              onClick={() => onChange?.(starsInOrder)} // при клике меняем рейтинг
               height={20}
               width={20}
               key={starsInOrder} //Для каждой звезды выводится компонент Star с порядковым номером key={starsInOrder}.

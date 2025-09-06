@@ -4,10 +4,42 @@ body {
   background-color: white;
 
   @layer utilities {
-  .bg-custom-hero {
+  .bg-custom-guitar {
           background-image: url('/assets/Image-Back.png'), url('/assets/Footerimg.png');
           background-position: center top -3rem, center bottom -17rem;
           background-size: contain, contain;
+  }
+
+  /* Мобильные устройства (макс. ширина 640px) */
+  @media (max-width: 768px) {
+    .bg-custom-guitar {
+      background-position: center top -1.7rem, center bottom -11rem;
+      background-size: contain, contain;
+    }
+  }
+
+  /* Планшеты (от 641px до 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bg-custom-guitar {
+      background-position: center top -2.4rem, center bottom -15rem;
+      background-size: contain, contain;
+    }
+  }
+
+  /* Десктопы (от 1025px) */
+  
+  @media (min-width: 1025px) {
+    .bg-custom-guitar {
+      background-position: center top -3rem, center bottom -22rem;
+      background-size: contain, contain;
+    }
+  }
+
+  @media (min-width: 2200px) {
+    .bg-custom-guitar {
+      background-position: center top -3rem, center bottom -32rem;
+      background-size: contain, contain;
+    }
   }
 }
 }

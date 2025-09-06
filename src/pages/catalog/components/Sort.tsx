@@ -9,8 +9,19 @@ interface GuitarProps {
 }
 
 const Sort: React.FC<GuitarProps> = () => {
+
+  //сортировка товара по цене и популярности
   const sortBy = useAppStore((state) => state.sortBy);
+  const sortOrder = useAppStore((state) => state.sortOrder);
   const setSortBy = useAppStore((state) => state.setSortBy);
+  const setSortOrder = useAppStore((state) => state.setSortOrder);
+
+  const handleArrowClick = (order: "asc" | "desc") => {
+    if (!sortBy) {
+      setSortBy("price"); // если сортировка не выбрана, ставим "по цене"
+    }
+    setSortOrder(order);
+  };
 
   return (
     <div className="h-6 mb-10 flex justify-between items-center">
@@ -19,17 +30,19 @@ const Sort: React.FC<GuitarProps> = () => {
           Сортировать:
         </p>
         <button
+          aria-label="Сортировать по цене"
           className="font-[Open Sans] font-normal not-italic text-base leading-none tracking-[5%] text-neutral-950 hover:text-neutral-600"
           onClick={() => {
-            setSortBy("SortPrice");
+            setSortBy("price");
           }}
         >
           по цене
         </button>
         <button
+          aria-label="Сортировать по популярности"
           className="font-[Open Sans] font-normal not-italic text-base leading-none tracking-[5%] text-neutral-950 hover:text-neutral-600"
           onClick={() => {
-            setSortBy("SortRating");
+            setSortBy("rating");
           }}
         >
           по популярности
@@ -37,18 +50,18 @@ const Sort: React.FC<GuitarProps> = () => {
       </div>
       <div className="flex items-end space-x-2">
         <button
-          onClick={() => {
-            setSortBy("ArrowUp");
-          }}
+          aria-label="Сортировать по возрастанию" //помогает screen reader’ам
+          title="Сортировать по возрастанию" //показывает всплывающую подсказку принаведении
+          onClick={() => handleArrowClick("asc")}
         >
-          <IconArrowUp />
+          <IconArrowUp color={sortOrder === "asc" ? "#131212" : "#585757"} />
         </button>
         <button
-          onClick={() => {
-            setSortBy("ArrowDown");
-          }}
+          aria-label="Сортировать по возрастанию"
+          title="Сортировать по возрастанию"
+          onClick={() => handleArrowClick("desc")}
         >
-          <IconArrowDown />
+          <IconArrowDown color={sortOrder === "desc" ? "#131212" : "#585757"} />
         </button>
       </div>
     </div>

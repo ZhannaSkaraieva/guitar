@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import RatingStar from "./StarList";
-import StarRatingLabel from "./StarRatingLabel";
+import StarListWrapper from "./StarListWrapper";
 import StarList from "./StarList";
-import StarRatingAverage from "./StarRatingAverage";
-import Guitars from "../../../Data";
-import { Guitar } from "../../../Data";
-import StarListSubmit from "./StarListInput";
+import { useStarStore } from "../../../store/StarStore";
 interface ReviewItemProps {
   newReview: ReviewType;
 }
-
 interface ReviewType {
   createdAt: string;
   id: number;
@@ -22,7 +17,7 @@ interface ReviewType {
 }
 
 const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
-  //debugger;
+
   return (
     <>
       <div className="flex w-full items-center justify-between">
@@ -34,7 +29,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ newReview }) => {
         </p>
       </div>
       <div className="flex flex-row my-2">
-        <StarList currentRating={newReview.rating} />
+        <StarList currentRating={newReview.rating}/>
       </div>
       <p>
         <span className="text-[#010101] font-[Open_Sans] text-sm font-semibold">

@@ -4,8 +4,8 @@ import { Guitar } from "../../../Data";
 import StrIcon from "../../../assets/StrIcon";
 import PopUpFormAdd from "./PopUpFormAdd";
 import StarRatingLabel from "./StarRatingLabel";
-import StarListInput from "./StarListInput";
 import { useModalStore } from "../../../store/ModalStore";
+import StarList from "./StarList";
 
 interface PopUpFormProps {
   guitar: Guitar;
@@ -15,12 +15,10 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
 
   if (!guitar) return null; // всегда что-то возвращаем
 
-  const modal = useModalStore((state) => state.modal);
   const setModallel = useModalStore((state) => state.setModallel);
 
   // создание новых отзывов
   const addReviews = useProductPageStore((state) => state.addReviews);
-  const setAddReviews = useProductPageStore((state) => state.setAddReviews);
 
   //установка состояния окон ввода отзыва
   const [name, setName] = useState("");
@@ -50,7 +48,6 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
     setDisadvantages("");
     setComment("");
     setRating(0);
-
     setModallel(<PopUpFormAdd />);
   }
 
@@ -70,7 +67,8 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
           <div>
             <form
               className="flex flex-col w-full h-full px-10"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit} // type="submit" - это свойство кнопки. Пр нажатии на кнопку, Enter вызывается событие submit у формы и срабатывает ф.handleSubmit
+              
             >
               <div className="flex flex-row justify-between w-full mt-4">
                 <div className="flex flex-col ">
@@ -96,7 +94,7 @@ const PopUpForm: React.FC<PopUpFormProps> = ({ guitar }) => {
                     </span>
                   </label>
                   {/* Здесь будет компонент для выбора рейтинга */}
-                  <StarListInput rating={rating} onChange={setRating} />
+                  <StarList currentRating={rating} onChange={setRating} />
                   <StarRatingLabel rating={rating} />
                 </div>
               </div>

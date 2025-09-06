@@ -72,7 +72,7 @@ const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
                 </button>
               </div>
             )}
-            <div className="flex items-center justify-end mt-4">
+            <div className="flex items-center justify-end p-4">
               <button
                 onClick={scrollToTop}
                 className="w-[190px] h-[40px] border-[#C90606] border-1 rounded-xs font-[Open_Sans] font-bold text-[#C90606] text-center items-center flex justify-center "

@@ -5,6 +5,7 @@ import { Guitar } from "../../../Data";
 import { useAppStore } from "../../../store/AppStore";
 import { SortString } from "./SortString";
 import Pagination from "./Pagination";
+import { useProductPageStore } from "../../../store/ProductPageStore";
 
 const CardList = () => {
   const minPrice = useAppStore((state) => state.minPrice);
@@ -13,12 +14,15 @@ const CardList = () => {
   const SortByTypes = useAppStore((state) => state.sortByTypes);
   const SortByStrings = useAppStore((state) => state.sortByStrings);
 
-  const SortBy = useAppStore((state) => state.sortBy);
+  const sortBy = useAppStore((state) => state.sortBy); // price | rating | null
+  const sortOrder = useAppStore((state) => state.sortOrder); // asc | desc
 
   const currentPage = useAppStore((state) => state.curentPage);
   const setCurrentPage = useAppStore((state) => state.setCurrentPage);
 
   const inputValue = useAppStore((state) => state.inputValue);
+
+  const reviews = useProductPageStore((state) => state.reviews);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -42,28 +46,28 @@ const CardList = () => {
     return SortPrice && SortType && SortString && inputGuitars;
   });
 
-  switch (SortBy) {
-    case "ArrowUp":
-      filteredGuitars.sort((a, b) => a.price - b.price);
-      break;
-    case "ArrowDown":
-      filteredGuitars.sort((a, b) => b.price - a.price);
-      break;
-    case "SortRating":
-      filteredGuitars.sort((a, b) => b.rating - a.rating);
-      break;
-    case "SortPrice":
-      filteredGuitars.sort((a, b) => a.price - b.price);
-      break;
-    default:
-      filteredGuitars.sort((a, b) => a.price - b.price);
-      break;
-  }
+  // фильтруем и добавляем средний рейтинг к каждому гитарному объекту
+  const guitarsWithAvgRating = filteredGuitars.map((g) => {
+    const guitarReviews = reviews.filter((r) => r.productId === g.id);
+    const totalRating = guitarReviews.reduce((sum, r) => sum + r.rating, 0);
+    const averageRating =
+      guitarReviews.length > 0 ? totalRating / guitarReviews.length : 0;
 
-  const currentCards = filteredGuitars.slice(
-    indexOfFirstCard,
-    indexOfLastCards,
-  );
+    return {
+      ...g,
+      averageRating,
+    };
+  });
+
+  // сортировка по цене или рейтингу
+  const sortedGuitars = [...guitarsWithAvgRating].sort((a, b) => {
+    const key = sortBy === "rating" ? "averageRating" : "price";
+    if (sortOrder === "asc") return a[key] - b[key];
+    return b[key] - a[key];
+  });
+
+  // пагинация
+  const currentCards = sortedGuitars.slice(indexOfFirstCard, indexOfLastCards);
 
   return (
     <>

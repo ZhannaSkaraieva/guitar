@@ -1,7 +1,6 @@
 import React from 'react'
 import { useStarStore } from '../../../store/StarStore'
 import { Star } from 'lucide-react';
-import { Guitar } from '../../../Data';
 import { useProductPageStore } from '../../../store/ProductPageStore';
 
 interface StarRatingAverageProps {
@@ -9,14 +8,10 @@ interface StarRatingAverageProps {
 }
 
 const StarRatingAverage: React.FC<StarRatingAverageProps> = ({productId}) => {
-  const ratingAverage = useStarStore((state) => state.ratingAverage);
-  const setRatingAverage = useStarStore((state) => state.setRatingAverage);
 
-    const reviews = useProductPageStore((state) => state.reviews);
-    const currentRating = useStarStore((state) => state.currentRating);
+  const reviews = useProductPageStore((state) => state.reviews);
 
   const maxValue = useStarStore((state) => state.maxValue);
-  const setMaxValue = useStarStore((state) => state.setMaxValue);
 
   const guitarReviews = reviews.filter(
     (review) => review.productId === productId,
@@ -37,11 +32,10 @@ const StarRatingAverage: React.FC<StarRatingAverageProps> = ({productId}) => {
 
         let fillClass = "fill-none";
 
-        if (starNumber <= Math.floor(averageRating)) {
-          fillClass = "fill-[#C90606]"; // полная
-        } else if (starNumber - averageRating <= 0.5) {
-          fillClass = "fill-[#C90606]/50"; // половинка
-        }
+        if (starNumber <= Math.round(averageRating)) {
+          fillClass = "fill-[#C90606]";
+        }// полная
+        
         return (
           <Star
             key={index}
@@ -54,7 +48,7 @@ const StarRatingAverage: React.FC<StarRatingAverageProps> = ({productId}) => {
 
       {/* отображение средней цифрой */}
       <span className="text-sm text-black ml-2">
-        {reviews.length > 0 ? averageRating : ""}
+        {reviews.length > 0 ? Math.round(averageRating) : ""}
       </span>
     </div>
   );

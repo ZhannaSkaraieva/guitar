@@ -26,7 +26,7 @@ const Card: React.FC<GuitarProps> = ({ guitar}) => {
           />
         </a>
         <div className="flex justify-start p-2 gap-2.5 items-center">
-          {/*<StarRatingAverage guitar={guitar} />**/}
+          <StarRatingAverage productId={guitar.id} />
         </div>
 
         {/* Заголовок и цена */}

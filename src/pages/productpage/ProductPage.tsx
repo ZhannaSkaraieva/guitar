@@ -7,6 +7,7 @@ import { CartContext } from "../../features/ContextProvider";
 import ProductButton from "./components/ProductButton";
 import Reviews from "./components/ReviewsList";
 import ReviewsList from "./components/ReviewsList";
+import StarRatingAverage from "./components/StarRatingAverage";
 
 interface ProductPageProps {
   guitars: Guitar[];
@@ -40,7 +41,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({
 
   return (
     <>
-      <div ref={topPage} className="flex flex-row justify-between items-center  w-full">
+      <div
+        ref={topPage}
+        className="flex flex-row justify-between items-center  w-full"
+      >
         <div className="w-[220px] h-[260px] p-2.5 flex justify-center items-center">
           <img src={result.image} alt={result.title} className="" />
         </div>
@@ -48,6 +52,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
           <h3 className=" my-2 font-[Open Sans] font-bold not-italic text-xl leading-none tracking-[5%] text-right">
             {result.title.toUpperCase()}
           </h3>
+          <StarRatingAverage productId={result.id} />
           <div className="flex flex-row  items-center mb-6"></div>
           <Tab guitar={result} />
         </div>
@@ -56,7 +61,11 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       <div className="flex flex-1 items-center justify-center w-full h-full my-8">
         <Line41 />
       </div>
-      <ReviewsList guitar={result} newReview={newReview}  scrollToTop={scrollToTop} />
+      <ReviewsList
+        guitar={result}
+        newReview={newReview}
+        scrollToTop={scrollToTop}
+      />
     </>
   );
 };

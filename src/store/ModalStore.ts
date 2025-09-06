@@ -28,3 +28,5 @@ export const useModalStore = create<ModalStore>((set) => ({
 //   }
 //   >
 // </button>
+
+//const onClose = () => setModallel(null);
