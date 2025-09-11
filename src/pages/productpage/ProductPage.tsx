@@ -1,44 +1,27 @@
-import React, { useContext,useRef } from "react";
+import React, {useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Guitar } from "../../Data";
 import Tab from "./components/Tab";
 import Line41 from "../../assets/Line41";
-import { CartContext } from "../../features/ContextProvider";
 import ProductButton from "./components/ProductButton";
-import Reviews from "./components/ReviewsList";
 import ReviewsList from "./components/ReviewsList";
 import StarRatingAverage from "./components/StarRatingAverage";
 
 interface ProductPageProps {
   guitars: Guitar[];
-  newReview: ReviewType;
 }
 
-interface ReviewType {
-  id: number;
-  name: string;
-  advantages: string;
-  disadvantages: string;
-  comment: string;
-  rating: number;
-}
-
-export const ProductPage: React.FC<ProductPageProps> = ({
-  guitars,
-  newReview,
-}) => {
+export const ProductPage: React.FC<ProductPageProps> = ({guitars}) => {
   const { id } = useParams();
   const result = guitars.find((guitar) => guitar.id === Number(id));
   if (!result) {
     return <div>Товар не найден</div>;
   }
-
   //якорная ссылка на верх страницы
   const topPage = useRef<HTMLDivElement | null>(null);
   const scrollToTop = () => {
     topPage.current?.scrollIntoView({ behavior: "smooth" });
   };
-
   return (
     <>
       <div
@@ -63,7 +46,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       </div>
       <ReviewsList
         guitar={result}
-        newReview={newReview}
         scrollToTop={scrollToTop}
       />
     </>

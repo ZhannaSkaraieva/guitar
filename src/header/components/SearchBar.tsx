@@ -3,10 +3,8 @@ import LoupeIcon from "../../assets/LoupeIcon";
 import { useAppStore } from "../../store/AppStore";
 import Guitars, { Guitar } from "../../Data";
 import { Link } from "react-router-dom";
+import Fuse from "fuse.js";
 
-interface GuitarProps {
-  guitar: Guitar;
-}
 
 const SearchBar = () => {
   const inputValue = useAppStore((state) => state.inputValue);
@@ -20,19 +18,25 @@ const SearchBar = () => {
     setInputValue(text);
   };
 
-  const inputGuitarsHandler = (e: React.MouseEvent<HTMLLIElement>) => {
-    const text = e.currentTarget.textContent || "";
+  const inputGuitarsHandler = (text: string) => {
     setInputValue(text);
-    setIsOpen(!isOpen);
+    setIsOpen(false);
   };
 
   const inputClickHandler = () => {
     setIsOpen(true);
   };
 
-  const filteredGuitars = Guitars.filter((guitar) =>
-    guitar.title.toLowerCase().includes(inputValue.toLowerCase()),
-  );
+  // const filteredGuitars = Guitars.filter((guitar) =>
+  //   guitar.title.toLowerCase().includes(inputValue.toLowerCase()),
+  // );
+
+  const fuse = new Fuse(Guitars, {
+    keys: ["title"],
+  });
+
+  const fuseResults = inputValue ? fuse.search(inputValue):[];
+  const filteredGuitars = fuseResults.map((result) => result.item);
 
   return (
     <>
@@ -44,13 +48,13 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Search?"
-          className="w-full max-md:border-none border border-white pl-10"
+          className="w-full max-md:border-none border border-white pl-10 focus:outline-none focus:ring-0"
           value={inputValue}
           onChange={handleSearch}
           onClick={inputClickHandler}
         />
 
-        <ul className="absolute top-full left-0 w-full text-white bg-black  border max-h-30 wrap-anywhere overflow-y-auto z-10">
+        <ul className="absolute top-full left-0 w-full text-textlight bg-backgrounddack  border max-h-30 wrap-anywhere overflow-y-auto z-10">
           {inputValue &&
             isOpen &&
             filteredGuitars.map((guitar) => {
@@ -58,7 +62,7 @@ const SearchBar = () => {
                 <li
                   key={guitar.id}
                   className="py-2 px-4  hover:bg-gray-400"
-                  onClick={inputGuitarsHandler}
+                  onClick={() => inputGuitarsHandler(guitar.title)}
                 >
                   <Link to={`/catalog/${guitar.id}`}>{guitar.title}</Link>
                 </li>

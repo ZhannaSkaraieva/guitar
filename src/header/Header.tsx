@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import LoupeIcon from "../assets/LoupeIcon";
-import CartIcon from "../assets/BasketIcon";
 import AppNav from "../route/AppNav";
 import { Link, NavLink } from "react-router-dom";
 import HeaderIcon from "../assets/HeaderIcon";
@@ -11,7 +9,7 @@ import { CartContext } from "../features/ContextProvider";
 export const Header = () => {
   const { cart } = useContext(CartContext);
   return (
-    <div className="box-border w-full h-[70px] md:h-[70px] lg:h-[90px] flex flex-row items-center px-4 sm:px-6 md:px-8 lg:px-10  bg-black text-white">
+    <div className="box-border w-full h-[70px] md:h-[70px] lg:h-[90px] flex flex-row items-center px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white">
       {/** ЛОГОТИП */}
       <div className="">
         <NavLink to="/" end>

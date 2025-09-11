@@ -17,14 +17,18 @@ interface AppStore {
   setSortBy: (sortBy: "price" | "rating") => void;
   setSortOrder: (order: "asc" | "desc") => void;
 
-  curentPage: number;
-  setCurrentPage: (currentPage: number) => void;
+  //поиск по названию
   inputValue: string;
   setInputValue: (inputValue: string) => void;
-  inputSuggestions: string[];
-  setInputSuggestions: (inputSuggestions: string[]) => void;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+
+
+  curentPage: number;
+  setCurrentPage: (currentPage: number) => void;
+  inputSuggestions: string[];
+  setInputSuggestions: (inputSuggestions: string[]) => void;
+  
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -65,12 +69,15 @@ export const useAppStore = create<AppStore>((set) => ({
   curentPage: 1,
   setCurrentPage: (curentPage) => set(() => ({ curentPage })),
 
+  //поиск по названию
   inputValue: "",
   setInputValue: (inputValue) => set(() => ({ inputValue })),
+  isOpen: true,
+  setIsOpen: (isOpen) => set(() => ({ isOpen })),
+
 
   inputSuggestions: [],
   setInputSuggestions: (inputSuggestions) => set(() => ({ inputSuggestions })),
 
-  isOpen: true,
-  setIsOpen: (isOpen) => set(() => ({ isOpen })),
+  
 }));

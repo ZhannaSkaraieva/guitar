@@ -6,7 +6,7 @@ const StarListWrapper = () => {
   const currentRating = useStarStore((state) => state.currentRating);
   const setCurrentRating = useStarStore((state) => state.setCurrentRating);
 
-  const onClick = () => setCurrentRating(currentRating);
+  const onClick = (value: number) => setCurrentRating(value);
   return (
     <div>
       <StarList currentRating={currentRating} onChange={onClick} />

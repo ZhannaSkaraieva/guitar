@@ -1,33 +1,19 @@
-import React, { useState, useRef } from "react";
-import RatingStar from "./StarList";
+import React, { useState} from "react";
 import GroupIcon from "../../../assets/GroupIcon";
 import { useProductPageStore } from "../../../store/ProductPageStore";
 import PopUpForm from "./PopUpForm";
 import { Guitar } from "../../../Data";
-import Review from "./ReviewItem";
 import ReviewItem from "./ReviewItem";
 import { useModalStore } from "../../../store/ModalStore";
 
 interface RewiewsProps {
   guitar: Guitar;
-  newReview: ReviewType;
   scrollToTop: () => void;
 }
 
-interface ReviewType {
-  id: number;
-  name: string;
-  advantages: string;
-  disadvantages: string;
-  comment: string;
-  rating: number;
-  
-}
 const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
-
-  const modal = useModalStore((state) => state.modal);
+  // функция открытия формы отзыва
   const setModallel = useModalStore((state) => state.setModallel);
-
   // вызов массива отзывов
   const reviews = useProductPageStore((state) => state.reviews);
   //видимость только 3 отзывов
@@ -61,6 +47,7 @@ const ReviewsList: React.FC<RewiewsProps> = ({ guitar, scrollToTop }) => {
             {guitarReviews.slice(0, visibleReviews).map((review) => (
               <ReviewItem key={review.id} newReview={review} />
             ))}
+
             {/**НАВИГАЦИЯ */}
             {guitarReviews.length > visibleReviews && (
               <div className="flex items-center justify-center ">
