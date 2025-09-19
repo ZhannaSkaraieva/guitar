@@ -14,7 +14,7 @@ interface GuitarProps {
 const CheckBox: React.FC<GuitarProps> = ({ guitar }) => {
   return (
     <div className="w-full h-auto ">
-      <h1 className="font-[Open Sans] font-bold text-2xl leading-[100%] tracking-normal">
+      <h1 className="font-[Open_Sans] font-bold text-2xl leading-[100%] tracking-normal">
         Фильтр
       </h1>
       <div className="my-6">
@@ -23,7 +23,7 @@ const CheckBox: React.FC<GuitarProps> = ({ guitar }) => {
 
       {/**СОРТИРОВКА ПО ЦЕНЕ */}
       <div className="flex flex-col w-full">
-        <SortPrice guitar={guitar} />
+        <SortPrice />
       </div>
       <div className="my-6">
         <Line18 />

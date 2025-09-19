@@ -21,8 +21,8 @@ interface RouterArrProps {
 
 const routeArr = [
   { path: "/", element: <Home /> },
-  { path: "catalog", label: "Каталог", element: <Catalog guitar={Guitars} /> },
-  { path: "catalog/:id", element: <ProductPage guitars={Guitars} /> },
+  { path: "catalog", title: "каталог", label: "Каталог", element: <Catalog guitar={Guitars} /> },
+  { path: "catalog/:id", title: "Главная", element: <ProductPage guitars={Guitars} /> },
   { path: "about", element: <About /> },
   { path: "wherebuy", element: <Wherebuy /> },
   { path: "basket", element: <Basket /> },
@@ -48,8 +48,8 @@ export default function AppRoutes() {
         <Route index element={<Home />} />
 
         {/* МАРШРУТЫ */}
-        {routeArr.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
+        {routeArr.map(({ path, element, title }) => (
+          <Route key={path} path={path} element={element}  />
         ))}
       </Route>
     </Routes>

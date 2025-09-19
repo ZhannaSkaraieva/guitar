@@ -8,7 +8,7 @@ interface GuitarProps {
   guitar: Guitar;
 }
 
-const SortPrice: React.FC<GuitarProps> = () => {
+const SortPrice = () => {
   const minPrice = useAppStore((state) => state.minPrice);
   const setMinPrice = useAppStore((state) => state.setMinPrice);
 
