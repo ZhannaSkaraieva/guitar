@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import Guitars from "../../../Data";
-import Card from "./Card";
-import { Guitar } from "../../../Data";
 import { useAppStore } from "../../../store/AppStore";
-import { SortString } from "./SortString";
 import Pagination from "./Pagination";
 import { useProductPageStore } from "../../../store/ProductPageStore";
+import { IProduct, IProducts } from "../../../utils/type";
+import ProductCard from "./ProductCard";
 
-const CardList = () => {
+interface ProductListProps {
+  products: IProduct[];
+}
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
   const minPrice = useAppStore((state) => state.minPrice);
   const maxPrice = useAppStore((state) => state.maxPrice);
 
@@ -28,62 +29,65 @@ const CardList = () => {
     setCurrentPage(1);
   }, [minPrice, maxPrice, SortByTypes, SortByStrings, inputValue]);
 
-  const cardsPerPage = 12;
-  const indexOfLastCards = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCards - cardsPerPage;
+  const productsPerPage = 12;
+  const indexOfLastCards = currentPage * productsPerPage;
+  const indexOfFirstCard = indexOfLastCards - productsPerPage;
 
-  const filteredGuitars = Guitars.filter((guitar) => {
-    const SortPrice = minPrice <= guitar.price && guitar.price <= maxPrice;
+  const filteredProducts = products.filter((product) => {
+    const SortPrice = minPrice <= product.price && product.price <= maxPrice;
     const SortType =
-      SortByTypes.length === 0 || SortByTypes.includes(guitar.type);
+      SortByTypes.length === 0 || SortByTypes.includes(product.type);
     const SortString =
-      SortByStrings.length === 0 || SortByStrings.includes(guitar.strings);
-    const inputGuitars =
+      SortByStrings.length === 0 || SortByStrings.includes(product.properties?.strings || 0);
+    const inputProduct =
       inputValue.trim() === "" ||
-      guitar.title.toLowerCase().includes(inputValue.toLowerCase()) ||
-      guitar.type.toLowerCase().includes(inputValue.toLowerCase());
+      product.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+      product.type.toLowerCase().includes(inputValue.toLowerCase());
 
-    return SortPrice && SortType && SortString && inputGuitars;
+    return SortPrice && SortType && SortString && inputProduct;
   });
 
   // фильтруем и добавляем средний рейтинг к каждому гитарному объекту
-  const guitarsWithAvgRating = filteredGuitars.map((g) => {
-    const guitarReviews = reviews.filter((r) => r.productId === g.id);
-    const totalRating = guitarReviews.reduce((sum, r) => sum + r.rating, 0);
+  const productsWithAvgRating = filteredProducts.map((p) => {
+    const productReviews = reviews.filter((r) => r.productId === p.id);
+    const totalRating = productReviews.reduce((sum, r) => sum + r.rating, 0);
     const averageRating =
-      guitarReviews.length > 0 ? totalRating / guitarReviews.length : 0;
+      productReviews.length > 0 ? totalRating / productReviews.length : 0;
 
     return {
-      ...g,
+      ...p,
       averageRating,
     };
   });
 
   // сортировка по цене или рейтингу
-  const sortedGuitars = [...guitarsWithAvgRating].sort((a, b) => {
+  const sortedProducts = [...productsWithAvgRating].sort((a, b) => {
     const key = sortBy === "rating" ? "averageRating" : "price";
     if (sortOrder === "asc") return a[key] - b[key];
     return b[key] - a[key];
   });
 
   // пагинация
-  const currentCards = sortedGuitars.slice(indexOfFirstCard, indexOfLastCards);
+  const currentProducts = sortedProducts.slice(
+    indexOfFirstCard,
+    indexOfLastCards,
+  );
 
   return (
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {currentCards.map((guitar: Guitar) => (
-          <Card key={guitar.id} guitar={guitar} />
+        {currentProducts.map((product: IProduct) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       <div className="flex justify-end mt-4">
         <Pagination
-          cardsPerPage={cardsPerPage}
-          totalCards={filteredGuitars.length}
+          productsPerPage={productsPerPage}
+          totalProducts={filteredProducts.length}
         />
       </div>
     </>
   );
 };
 
-export default CardList;
+export default ProductList;

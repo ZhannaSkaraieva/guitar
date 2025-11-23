@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import CheckBox from "./components/CheckBox";
-import CardList from "./components/CardList";
+import CardList from "./components/ProductList";
 import { Guitar } from "../../Data";
 import Sort from "./components/Sort";
 

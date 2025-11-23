@@ -20,5 +20,28 @@ If you are developing a production application, we recommend using TypeScript wi
 7. npm install tailwindcss @tailwindcss/vite
 8. npm install typescript --save-dev
 9. npx tsc --init
-
+```bash
 npx prettier . --write
+```
+
+
+## TanStack Query
+data-fetching library for web applications.
+it makes fetching, caching, synchronizing and updating server state in your web applications.
+1. Installation
+```bash
+$ npm i @tanstack/react-query
+```
+2. install  ESLint Plugin Query to help catch bugs and inconsistencies code
+```bash
+$ npm i -D @tanstack/eslint-plugin-query
+```
+
+3. Devtools
+```bash
+$ npm i @tanstack/react-query-devtools
+```
+импорт инструментов разработчика следующим образом:
+> import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+4. 

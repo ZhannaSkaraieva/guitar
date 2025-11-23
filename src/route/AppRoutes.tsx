@@ -13,6 +13,7 @@ import Return from "../pages/Return";
 import Servicecenter from "../pages/Servicecenter";
 import Pagenotfound from "../pages/Pagenotfound";
 import Blog from "../pages/Blog";
+import Login from "../pages/login/Login";
 
 interface RouterArrProps {
   guitars: Guitar[];
@@ -21,11 +22,21 @@ interface RouterArrProps {
 
 const routeArr = [
   { path: "/", element: <Home /> },
-  { path: "catalog", title: "каталог", label: "Каталог", element: <Catalog guitar={Guitars} /> },
-  { path: "catalog/:id", title: "Главная", element: <ProductPage guitars={Guitars} /> },
+  {
+    path: "catalog",
+    title: "каталог",
+    label: "Каталог",
+    element: <Catalog guitar={Guitars} />,
+  },
+  {
+    path: "catalog/:id",
+    title: "Главная",
+    element: <ProductPage guitars={Guitars} />,
+  },
   { path: "about", element: <About /> },
   { path: "wherebuy", element: <Wherebuy /> },
   { path: "basket", element: <Basket /> },
+  { path: "login", element: <Login /> },
   { path: "blog", element: <Blog /> },
   { path: "faq", element: <Faq /> },
   { path: "return", element: <Return /> },
@@ -36,6 +47,7 @@ const routeArr = [
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       {/**ОТОБРАЖЕНИЕ ГИТАР НА ЗАДНЕМ ФОНЕ
        *
        *
@@ -49,7 +61,7 @@ export default function AppRoutes() {
 
         {/* МАРШРУТЫ */}
         {routeArr.map(({ path, element, title }) => (
-          <Route key={path} path={path} element={element}  />
+          <Route key={path} path={path} element={element} />
         ))}
       </Route>
     </Routes>

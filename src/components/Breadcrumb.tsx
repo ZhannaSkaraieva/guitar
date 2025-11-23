@@ -3,7 +3,14 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import ArrowRightIcon from "../assets/ArrowRightIcon";
 
-const Breadcrumb = () => {
+interface BreadcrumbProps {
+  id: string;
+  path: string;
+  title: string;
+  url: string;
+}
+
+const Breadcrumb: React.FC = () => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   return (

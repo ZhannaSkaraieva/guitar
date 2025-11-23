@@ -5,9 +5,14 @@ import HeaderIcon from "../assets/HeaderIcon";
 import SearchBar from "./components/SearchBar";
 import BasketIcon from "../assets/BasketIcon";
 import { CartContext } from "../features/ContextProvider";
+import { JSX } from "react/jsx-runtime";
+import { useModalStore } from "../store/ModalStore";
+import LoginModal from "../pages/login/LoginModal";
 
 export const Header = () => {
   const { cart } = useContext(CartContext);
+  const setModallel = useModalStore((state) => state.setModallel);
+
   return (
     <div className="box-border w-full h-[70px] md:h-[70px] lg:h-[90px] flex flex-row items-center px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white">
       {/** ЛОГОТИП */}
@@ -28,10 +33,10 @@ export const Header = () => {
 
       {/** КОРЗИНА */}
 
-      <div className="rflex items-center">
+      <div className="flex items-center justify-center h-10">
         <Link
           to="/basket"
-          className=" relative flex items-center justify-center w-10 lg:w-35  "
+          className=" relative flex items-center justify-center w-10 h-10 lg:w-16 lg:h-16"
         >
           <BasketIcon />
 
@@ -44,6 +49,18 @@ export const Header = () => {
             )
           }
         </Link>
+      </div>
+
+      {/** LOGIN */}
+
+      <div>
+        <button
+          type="submit"
+          className="ml-4"
+          onClick={() => setModallel(<LoginModal />)}
+        >
+          Вхід
+        </button>
       </div>
     </div>
   );

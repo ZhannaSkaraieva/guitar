@@ -48,13 +48,13 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Search?"
-          className="w-full max-md:border-none border border-white pl-10 focus:outline-none focus:ring-0"
+          className="w-full max-md:border-none border border-[#FEFAFA]/60 pl-10 focus:outline-none focus:ring-0"
           value={inputValue}
           onChange={handleSearch}
           onClick={inputClickHandler}
         />
 
-        <ul className="absolute top-full left-0 w-full text-textlight bg-backgrounddack  border max-h-30 wrap-anywhere overflow-y-auto z-10">
+        <ul className="absolute top-full left-0 w-full text-textlight bg-backgrounddack  border-[#FEFAFA]/60 border-t-0 max-h-30 wrap-anywhere overflow-y-auto z-10">
           {inputValue &&
             isOpen &&
             filteredGuitars.map((guitar) => {
